@@ -180,7 +180,7 @@ document.getElementById('addRows').addEventListener('click', function () {
                     <option disabled value="0" selected>Select Product</option>
                 </select>
             </td>
-            <td><input type="number" name="productQty[]" id="productQty_${rowCount}" required class="form-control qty" autocomplete="off" placeholder="Qty" min="1" oninput="handleQuantityInput(this)"></td>
+            <td><input type="text" name="productQty[]" id="productQty_${rowCount}" required class="form-control qty" autocomplete="off" placeholder="Qty" min="1" oninput="handleQuantityInput(this)"></td>
             <td style="display: none"><input type="text" readonly name="productWeight[]" id="productWeight_${rowCount}" class="form-control"></td>
             <td style="display: none"><input type="text" readonly name="productStampEnduser[]" id="productStampEnduser_${rowCount}" class="form-control"></td>
             <td><input type="text" required name="productPrice[]" id="productPrice_${rowCount}" class="form-control" autocomplete="off" placeholder="Auto-calculated" readonly></td>
