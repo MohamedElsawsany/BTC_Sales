@@ -5,7 +5,7 @@
     {name: "ربع جنيه", weight: 2, stampEnduser: 71, num1: 1, num2: 1, num3: 0},
     {name: "نصف جنيه", weight: 4, stampEnduser: 66, num1: 1, num2: 1, num3: 0},
     {name: "جنيه", weight: 8, stampEnduser: 61, num1: 1, num2: 1, num3: 0},
-    {name: "2.5 جنيه", weight: 2.5, stampEnduser: 56, num1: 1, num2: 1, num3: 0},
+    {name: "2.5 جنيه", weight: 20, stampEnduser: 56, num1: 1, num2: 1, num3: 0},
     {name: "خمسة جنيه", weight: 40, stampEnduser: 53, num1: 1, num2: 1, num3: 0},
     {name: "عشرة جنيه", weight: 80, stampEnduser: 51, num1: 1, num2: 1, num3: 0},
 
