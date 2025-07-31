@@ -43,9 +43,9 @@
     {name: "سبيكة نصف كيلو", weight: 500, stampEnduser: 29, num1: 999.9, num2: 875, num3: 0},
     {name: "سبيكة 1 كيلو", weight: 1000, stampEnduser: 27, num1: 999.9, num2: 875, num3: 0},
 
-    {name: "ربع كيلو دائري", weight: 31.10, stampEnduser: 117, num1: 999.9, num2: 875, num3: 0},
-    {name: "نصف كيلو دائري", weight: 31.10, stampEnduser: 117, num1: 999.9, num2: 875, num3: 0},
-    {name: "1 كيلو دائري", weight: 31.10, stampEnduser: 117, num1: 999.9, num2: 875, num3: 0}
+    {name: "ربع كيلو دائري", weight: 250, stampEnduser: 117, num1: 999.9, num2: 875, num3: 0},
+    {name: "نصف كيلو دائري", weight: 500, stampEnduser: 117, num1: 999.9, num2: 875, num3: 0},
+    {name: "1 كيلو دائري", weight: 1000, stampEnduser: 117, num1: 999.9, num2: 875, num3: 0}
 
 
 
