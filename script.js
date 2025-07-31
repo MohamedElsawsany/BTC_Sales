@@ -183,7 +183,7 @@ document.getElementById('addRows').addEventListener('click', function () {
             <td><input type="text" name="productQty[]" id="productQty_${rowCount}" required class="form-control qty" autocomplete="off" placeholder="Qty" min="1" oninput="handleQuantityInput(this)"></td>
             <td style="display: none"><input type="text" readonly name="productWeight[]" id="productWeight_${rowCount}" class="form-control"></td>
             <td style="display: none"><input type="text" readonly name="productStampEnduser[]" id="productStampEnduser_${rowCount}" class="form-control"></td>
-            <td><input type="text" required name="productPrice[]" id="productPrice_${rowCount}" class="form-control" autocomplete="off" placeholder="Auto-calculated" readonly></td>
+            <td><input type="text" required name="productPrice[]" id="productPrice_${rowCount}" class="form-control total-input" autocomplete="off" readonly></td>
             <td><input readonly type="text" name="totalQtyProductPrice[]" id="totalQtyProductPrice_${rowCount}" required class="form-control price total-input" autocomplete="off"></td>
             <td style="display: none"><input readonly type="text" name="productNum1[]" id="productNum1_${rowCount}"></td>
             <td style="display: none"><input readonly type="text" name="productNum2[]" id="productNum2_${rowCount}"></td>
