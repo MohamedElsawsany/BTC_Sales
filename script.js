@@ -43,9 +43,30 @@
     {name: "سبيكة نصف كيلو", weight: 500, stampEnduser: 29, num1: 999.9, num2: 875, num3: 0},
     {name: "سبيكة 1 كيلو", weight: 1000, stampEnduser: 27, num1: 999.9, num2: 875, num3: 0},
 
-    {name: "ربع كيلو دائري", weight: 250, stampEnduser: 117, num1: 999.9, num2: 875, num3: 0},
-    {name: "نصف كيلو دائري", weight: 500, stampEnduser: 117, num1: 999.9, num2: 875, num3: 0},
-    {name: "1 كيلو دائري", weight: 1000, stampEnduser: 117, num1: 999.9, num2: 875, num3: 0}
+    {name: "ربع كيلو دائري", weight: 250, stampEnduser: 32.25, num1: 999.9, num2: 875, num3: 0},
+    {name: "نصف كيلو دائري", weight: 500, stampEnduser: 31.75, num1: 999.9, num2: 875, num3: 0},
+    {name: "1 كيلو دائري", weight: 1000, stampEnduser: 31, num1: 999.9, num2: 875, num3: 0},
+
+    {name: "هدايا 2.5 جرام", weight: 2.5, stampEnduser: 117, num1: 999.9, num2: 875, num3: 0},
+    {name: "هدايا 5 جرام", weight: 5, stampEnduser: 107, num1: 999.9, num2: 875, num3: 0},
+    {name: "هدايا 10 جرام", weight: 10, stampEnduser: 93, num1: 999.9, num2: 875, num3: 0},
+
+    {name: "سبيكة ديزني / مارفل 2.5 جرام", weight: 2.5, stampEnduser: 112, num1: 999.9, num2: 875, num3: 0},
+    {name: "سبيكة ديزني / مارفل 5 جرام", weight: 5, stampEnduser: 77, num1: 999.9, num2: 875, num3: 0},
+    {name: "سبيكة ديزني / مارفل 10 جرام", weight: 10, stampEnduser: 74, num1: 999.9, num2: 875, num3: 0},
+
+    {name: "قلب تعليقة", weight: 10.35, stampEnduser: 72, num1: 999.9, num2: 875, num3: 0},
+
+    {name: "الاميرات 5 جرام", weight: 5, stampEnduser: 107, num1: 999.9, num2: 875, num3: 0},
+    {name: "الاميرات 10 جرام", weight: 10, stampEnduser: 102, num1: 999.9, num2: 875, num3: 0},
+    {name: "الاميرات 15.9 جرام", weight: 15.9, stampEnduser: 97, num1: 999.9, num2: 875, num3: 0},
+    {name: "الاميرات 31.10 جرام", weight: 31.10, stampEnduser: 92, num1: 999.9, num2: 875, num3: 0},
+
+    {name: "31.10 جرام خريطة مصر", weight: 31.10, stampEnduser: 72, num1: 999.9, num2: 875, num3: 0},
+    {name: "31.10 جرام (السعودية)", weight: 31.10, stampEnduser: 72, num1: 999.9, num2: 875, num3: 0},
+
+    {name: "إسورة 30 جرام سادة", weight: 30, stampEnduser: 121, num1: 1, num2: 1, num3: 0},
+    {name: "إسورة 30 جرام مجدول", weight: 30, stampEnduser: 126, num1: 1, num2: 1, num3: 0}
 
 
 
