@@ -253,3 +253,15 @@ body {
         transform: translateY(0);
     }
 }
+
+@media (max-width: 768px) {
+    .table-responsive {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    table.table {
+        width: max-content;
+        min-width: 800px;
+    }
+}
