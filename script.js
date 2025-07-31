@@ -1,7 +1,4 @@
-// *put 1 if product carta 21k and if product carta 24k put 999.9 *
-// *put 1 if product carta 21k and if product carta 24k put 875 *
-
-    const sale_btc_products = [
+const sale_btc_products = [
     {name: "ربع جنيه", weight: 2, stampEnduser: 71, num1: 1, num2: 1, num3: 0},
     {name: "نصف جنيه", weight: 4, stampEnduser: 66, num1: 1, num2: 1, num3: 0},
     {name: "جنيه", weight: 8, stampEnduser: 61, num1: 1, num2: 1, num3: 0},
@@ -14,8 +11,8 @@
     {name: "جنيه تعليقة", weight: 8.35, stampEnduser: 76, num1: 1, num2: 1, num3: 0},
 
     {name: "ربع جنيه مارفال", weight: 2, stampEnduser: 76, num1: 1, num2: 1, num3: 0},
-    {name: "نصف جنيه مارقال", weight: 4, stampEnduser: 71, num1: 1, num2: 1, num3: 0},
-    {name: "جنيه مارقال", weight: 8, stampEnduser: 61, num1: 1, num2: 1, num3: 0},
+    {name: "نصف جنيه مارفال", weight: 4, stampEnduser: 71, num1: 1, num2: 1, num3: 0},
+    {name: "جنيه مارفال", weight: 8, stampEnduser: 61, num1: 1, num2: 1, num3: 0},
     {name: "5 جنيه مارفال", weight: 40, stampEnduser: 56, num1: 1, num2: 1, num3: 0},
 
     // {name: "خاتم ربع جنيه", weight: 4, stampEnduser: 136, num1: 1, num2: 1, num3: 0},
@@ -70,153 +67,317 @@
 
 
 
-    ];
+];
 
-    function formatMoney(value) {
-    return Number(value).toLocaleString('en-US');
+let rowCount = 1;
+
+// Utility functions
+function formatMoney(value) {
+    if (isNaN(value) || value === null || value === undefined) return '0';
+    return Number(value).toLocaleString('en-US', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    });
 }
 
-    function parseNumber(value) {
-    return parseFloat((value || "0").toString().replace(/,/g, ''));
+function parseNumber(value) {
+    if (!value) return 0;
+    return parseFloat(value.toString().replace(/,/g, '')) || 0;
 }
 
-    let rowCount = 1;
+function showError(elementId, message) {
+    const element = document.getElementById(elementId);
+    const errorElement = document.getElementById(elementId + 'Error');
+    if (element && errorElement) {
+        element.parentElement.classList.add('has-error');
+        errorElement.textContent = message;
+    }
+}
 
-    function populateProductSelect(select) {
+function clearError(elementId) {
+    const element = document.getElementById(elementId);
+    const errorElement = document.getElementById(elementId + 'Error');
+    if (element && errorElement) {
+        element.parentElement.classList.remove('has-error');
+    }
+}
+
+function populateProductSelect(select) {
     select.innerHTML = `<option disabled value="0" selected>Select Product</option>`;
     sale_btc_products.forEach((product, index) => {
-    const option = document.createElement("option");
-    option.value = index + 1;
-    option.textContent = product.name;
-    select.appendChild(option);
-});
+        const option = document.createElement("option");
+        option.value = index + 1;
+        option.textContent = product.name;
+        select.appendChild(option);
+    });
 }
 
-    document.addEventListener('DOMContentLoaded', () => {
+function handleGoldPriceInput(input) {
+    clearError('goldPrice');
+
+    // Remove non-numeric characters except decimal point
+    let value = input.value.replace(/[^\d.]/g, '');
+
+    // Ensure only one decimal point
+    const parts = value.split('.');
+    if (parts.length > 2) {
+        value = parts[0] + '.' + parts.slice(1).join('');
+    }
+
+    input.value = value;
+
+    if (value && !isNaN(value) && parseFloat(value) > 0) {
+        calculateTotal();
+    } else if (value) {
+        showError('goldPrice', 'Please enter a valid gold price');
+    }
+}
+
+function handleQuantityInput(input) {
+    let value = parseInt(input.value);
+    if (isNaN(value) || value < 1) {
+        input.value = '';
+    } else {
+        input.value = value;
+        calculateTotal();
+    }
+}
+
+// Event listeners
+document.addEventListener('DOMContentLoaded', () => {
     populateProductSelect(document.getElementById('productId_1'));
 });
 
-    document.addEventListener('change', function (e) {
+document.addEventListener('change', function (e) {
     if (e.target && e.target.matches("select[name='productId[]']")) {
-    const select = e.target;
-    const rowId = select.id.split('_')[1];
-    const selectedIndex = select.selectedIndex - 1;
+        const select = e.target;
+        const rowId = select.id.split('_')[1];
+        const selectedIndex = select.selectedIndex - 1;
 
-    if (selectedIndex >= 0 && selectedIndex < sale_btc_products.length) {
-    const selectedProduct = sale_btc_products[selectedIndex];
+        if (selectedIndex >= 0 && selectedIndex < sale_btc_products.length) {
+            const selectedProduct = sale_btc_products[selectedIndex];
 
-    document.getElementById(`productWeight_${rowId}`).value = selectedProduct.weight;
-    document.getElementById(`productStampEnduser_${rowId}`).value = selectedProduct.stampEnduser;
-    document.getElementById(`productNum1_${rowId}`).value = selectedProduct.num1;
-    document.getElementById(`productNum2_${rowId}`).value = selectedProduct.num2;
-    document.getElementById(`productNum3_${rowId}`).value = selectedProduct.num3;
+            document.getElementById(`productWeight_${rowId}`).value = selectedProduct.weight;
+            document.getElementById(`productStampEnduser_${rowId}`).value = selectedProduct.stampEnduser;
+            document.getElementById(`productNum1_${rowId}`).value = selectedProduct.num1;
+            document.getElementById(`productNum2_${rowId}`).value = selectedProduct.num2;
+            document.getElementById(`productNum3_${rowId}`).value = selectedProduct.num3;
 
-    calculateTotal();
-}
-}
+            calculateTotal();
+        }
+    }
 });
 
-    document.getElementById('addRows').addEventListener('click', function () {
+document.getElementById('addRows').addEventListener('click', function () {
     rowCount++;
-    const tableBody = document.querySelector('#invoiceProducts tbody');
-    const newRow = `
-            <tr>
-                <td><div class="checkbox-container"><input class="itemRow form-check-input" type="checkbox"></div></td>
-                <td>
-                    <select required name="productId[]" id="productId_${rowCount}" class="form-select">
-                        <option disabled value="0" selected>Select Product</option>
-                    </select>
-                </td>
-                <td><input type="number" name="productQty[]" id="productQty_${rowCount}" required onkeyup="calculateTotal()" class="form-control qty" autocomplete="off" placeholder="Qty" min="1"></td>
-                <td style="display: none"><input type="text" readonly name="productWeight[]" id="productWeight_${rowCount}" required class="form-control" autocomplete="off"></td>
-                <td style="display: none"><input type="text" readonly name="productStampEnduser[]" id="productStampEnduser_${rowCount}" required class="form-control" autocomplete="off"></td>
-                <td><input type="text" required name="productPrice[]" id="productPrice_${rowCount}" onkeyup="calculateTotalByPrice()" class="form-control" autocomplete="off" placeholder="Price"></td>
-                <td><input readonly type="text" name="totalQtyProductPrice[]" id="totalQtyProductPrice_${rowCount}" required class="form-control price total-input" autocomplete="off"></td>
-                <td style="display: none"><input readonly required type="text" name="productNum1[]" id="productNum1_${rowCount}"></td>
-                <td style="display: none"><input readonly required type="text" name="productNum2[]" id="productNum2_${rowCount}"></td>
-                <td style="display: none"><input readonly required type="text" name="productNum3[]" id="productNum3_${rowCount}"></td>
-            </tr>
+    const tableBody = document.getElementById('productTableBody');
+    const newRow = document.createElement('tr');
+    newRow.className = 'slide-in';
+    newRow.innerHTML = `
+            <td><div class="checkbox-container"><input class="itemRow form-check-input" type="checkbox"></div></td>
+            <td>
+                <select required name="productId[]" id="productId_${rowCount}" class="form-select">
+                    <option disabled value="0" selected>Select Product</option>
+                </select>
+            </td>
+            <td><input type="number" name="productQty[]" id="productQty_${rowCount}" required class="form-control qty" autocomplete="off" placeholder="Qty" min="1" oninput="handleQuantityInput(this)"></td>
+            <td style="display: none"><input type="text" readonly name="productWeight[]" id="productWeight_${rowCount}" class="form-control"></td>
+            <td style="display: none"><input type="text" readonly name="productStampEnduser[]" id="productStampEnduser_${rowCount}" class="form-control"></td>
+            <td><input type="text" required name="productPrice[]" id="productPrice_${rowCount}" class="form-control" autocomplete="off" placeholder="Auto-calculated" readonly></td>
+            <td><input readonly type="text" name="totalQtyProductPrice[]" id="totalQtyProductPrice_${rowCount}" required class="form-control price total-input" autocomplete="off"></td>
+            <td style="display: none"><input readonly type="text" name="productNum1[]" id="productNum1_${rowCount}"></td>
+            <td style="display: none"><input readonly type="text" name="productNum2[]" id="productNum2_${rowCount}"></td>
+            <td style="display: none"><input readonly type="text" name="productNum3[]" id="productNum3_${rowCount}"></td>
         `;
-    tableBody.insertAdjacentHTML('beforeend', newRow);
+    tableBody.appendChild(newRow);
 
-    // فقط املى select الصف الجديد
+    // Populate the new select dropdown
     const newSelect = document.getElementById(`productId_${rowCount}`);
     populateProductSelect(newSelect);
 });
 
-    document.getElementById('removeRows').addEventListener('click', function () {
-    document.querySelectorAll('.itemRow:checked').forEach(checkbox => {
+document.getElementById('removeRows').addEventListener('click', function () {
+    const checkedBoxes = document.querySelectorAll('.itemRow:checked');
+    if (checkedBoxes.length === 0) {
+        alert('Please select at least one row to delete.');
+        return;
+    }
+
+    checkedBoxes.forEach(checkbox => {
         checkbox.closest('tr').remove();
     });
     calculateTotal();
+
+    // Uncheck "select all" if no rows remain
+    const remainingRows = document.querySelectorAll('.itemRow');
+    if (remainingRows.length === 0) {
+        document.getElementById('checkAll').checked = false;
+    }
 });
 
-    document.getElementById('checkAll').addEventListener('change', function () {
+document.getElementById('checkAll').addEventListener('change', function () {
     const checked = this.checked;
     document.querySelectorAll('.itemRow').forEach(cb => cb.checked = checked);
 });
 
-    function calculateTotalByPrice() {
-    let totalAmount = 0;
-    document.querySelectorAll("[id^='productQty_']").forEach(function (element) {
-    const id = element.id.split('_')[1];
-    const qty = parseNumber(document.getElementById(`productQty_${id}`).value);
-    const price = parseNumber(document.getElementById(`productPrice_${id}`).value);
-    const total = price * qty;
+// Update "select all" checkbox based on individual selections
+document.addEventListener('change', function(e) {
+    if (e.target && e.target.classList.contains('itemRow')) {
+        const allCheckboxes = document.querySelectorAll('.itemRow');
+        const checkedCheckboxes = document.querySelectorAll('.itemRow:checked');
+        const selectAllCheckbox = document.getElementById('checkAll');
 
-    document.getElementById(`totalQtyProductPrice_${id}`).value = formatMoney(total);
-    totalAmount += total;
+        if (checkedCheckboxes.length === 0) {
+            selectAllCheckbox.indeterminate = false;
+            selectAllCheckbox.checked = false;
+        } else if (checkedCheckboxes.length === allCheckboxes.length) {
+            selectAllCheckbox.indeterminate = false;
+            selectAllCheckbox.checked = true;
+        } else {
+            selectAllCheckbox.indeterminate = true;
+        }
+    }
 });
+
+function calculateTotal() {
+    if (!validateGoldPrice()) {
+        return;
+    }
+
+    calculateItemPrices();
+    calculateGoldPrice24();
+}
+
+function validateGoldPrice() {
+    const goldPrice = parseNumber(document.getElementById('goldPrice').value);
+    if (goldPrice <= 0) {
+        showError('goldPrice', 'Please enter a valid gold price greater than 0');
+        return false;
+    }
+    clearError('goldPrice');
+    return true;
+}
+
+function calculateItemPrices() {
+    let totalAmount = 0;
+    const goldPrice = parseNumber(document.getElementById('goldPrice').value);
+
+    document.querySelectorAll("[id^='productQty_']").forEach(function (element) {
+        const id = element.id.split('_')[1];
+        const weightElement = document.getElementById(`productWeight_${id}`);
+        const stampElement = document.getElementById(`productStampEnduser_${id}`);
+        const qtyElement = document.getElementById(`productQty_${id}`);
+        const priceElement = document.getElementById(`productPrice_${id}`);
+        const totalElement = document.getElementById(`totalQtyProductPrice_${id}`);
+
+        if (!weightElement || !stampElement || !qtyElement || !priceElement || !totalElement) {
+            return;
+        }
+
+        const weight = parseNumber(weightElement.value);
+        const stampEnduser = parseNumber(stampElement.value);
+        const quantity = parseNumber(qtyElement.value);
+        const num1 = parseNumber(document.getElementById(`productNum1_${id}`)?.value) || 1;
+        const num2 = parseNumber(document.getElementById(`productNum2_${id}`)?.value) || 1;
+        const num3 = parseNumber(document.getElementById(`productNum3_${id}`)?.value) || 0;
+
+        if (quantity > 0 && weight > 0 && goldPrice > 0) {
+            const soso = num1 / num2;
+            const unitPrice = goldPrice * soso + stampEnduser;
+            const total = weight * quantity * unitPrice + num3;
+            const itemPrice = total / quantity;
+
+            priceElement.value = formatMoney(itemPrice);
+            totalElement.value = formatMoney(total);
+            totalAmount += total;
+        } else {
+            priceElement.value = '';
+            totalElement.value = '';
+        }
+    });
+
     document.getElementById('subTotal').value = formatMoney(totalAmount);
 }
 
-    function function1() {
-    let totalAmount = 0;
-    document.querySelectorAll("[id^='productQty_']").forEach(function (element) {
-    const id = element.id.split('_')[1];
-    const weight = parseNumber(document.getElementById(`productWeight_${id}`).value);
-    const stampEnduser = parseNumber(document.getElementById(`productStampEnduser_${id}`).value);
-    const goldprice = parseNumber(document.getElementById('goldPrice').value);
-    const quantity = parseNumber(document.getElementById(`productQty_${id}`).value);
-    const num1 = parseNumber(document.getElementById(`productNum1_${id}`).value) || 1;
-    const num2 = parseNumber(document.getElementById(`productNum2_${id}`).value) || 1;
-    const num3 = parseNumber(document.getElementById(`productNum3_${id}`).value);
-
-    if (quantity > 0) {
-    let soso = num1 / num2;
-    let unitPrice = goldprice * soso + stampEnduser;
-    let total = weight * quantity * unitPrice + num3;
-    let itemPrice = total / quantity;
-
-    document.getElementById(`productPrice_${id}`).value = formatMoney(itemPrice);
-    document.getElementById(`totalQtyProductPrice_${id}`).value = formatMoney(total);
-    totalAmount += total;
+function calculateGoldPrice24() {
+    const goldPrice = parseNumber(document.getElementById('goldPrice').value);
+    if (goldPrice > 0) {
+        const price24 = goldPrice * (999.9 / 875);
+        document.getElementById('goldPrice24').value = formatMoney(price24);
+    } else {
+        document.getElementById('goldPrice24').value = '';
+    }
 }
+
+// Format number inputs on blur
+document.addEventListener('blur', function (e) {
+    if (e.target && (e.target.id === 'goldPrice' || e.target.id.startsWith('productPrice_'))) {
+        const value = parseNumber(e.target.value);
+        if (value > 0) {
+            e.target.value = formatMoney(value);
+        }
+    }
+}, true);
+
+// Prevent form submission on enter key in input fields
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' && e.target.tagName === 'INPUT') {
+        e.preventDefault();
+        // Move to next input or trigger calculation
+        const form = e.target.closest('form') || document;
+        const inputs = Array.from(form.querySelectorAll('input:not([readonly]):not([disabled]), select'));
+        const currentIndex = inputs.indexOf(e.target);
+        if (currentIndex < inputs.length - 1) {
+            inputs[currentIndex + 1].focus();
+        }
+    }
 });
-    document.getElementById('subTotal').value = formatMoney(totalAmount);
+
+// Initialize tooltips if Bootstrap is available
+document.addEventListener('DOMContentLoaded', function() {
+    if (typeof bootstrap !== 'undefined' && bootstrap.Tooltip) {
+        const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+    }
+});
+
+// Add loading states for buttons
+function showLoading(buttonId) {
+    const button = document.getElementById(buttonId);
+    if (button) {
+        button.classList.add('loading');
+        button.disabled = true;
+    }
 }
 
-    function function2() {
-    const goldprice = parseNumber(document.getElementById('goldPrice').value);
-    const price24 = goldprice * (999.9 / 875);
-    document.getElementById('goldPrice24').value = formatMoney(price24.toFixed(2));
+function hideLoading(buttonId) {
+    const button = document.getElementById(buttonId);
+    if (button) {
+        button.classList.remove('loading');
+        button.disabled = false;
+    }
 }
 
-    function calculateTotal() {
-    function1();
-    function2();
+// Debounce function for better performance
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
 }
 
-    document.addEventListener('input', function (e) {
-    const targets = ['goldPrice', 'goldPrice24', 'subTotal'];
-    if (
-    e.target.id.startsWith("productPrice_") ||
-    e.target.id.startsWith("totalQtyProductPrice_") ||
-    targets.includes(e.target.id)
-    ) {
-    let value = e.target.value.replace(/,/g, '');
-    if (!isNaN(value) && value !== "") {
-    e.target.value = formatMoney(value);
-}
-}
+// Debounced calculation for better performance
+const debouncedCalculateTotal = debounce(calculateTotal, 300);
+
+// Update gold price input to use debounced calculation
+document.getElementById('goldPrice').addEventListener('input', function() {
+    handleGoldPriceInput(this);
+    debouncedCalculateTotal();
 });
