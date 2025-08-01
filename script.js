@@ -538,9 +538,9 @@ function calculateItemPrices() {
         const weight = parseNumber(weightElement.value);
         const stampEnduser = parseNumber(stampElement.value);
         const quantity = parseNumber(qtyElement.value);
-        const num1 = parseNumber(document.getElementById(`productNum1_${id}`)?.value) || 1;
-        const num2 = parseNumber(document.getElementById(`productNum2_${id}`)?.value) || 1;
-        const num3 = parseNumber(document.getElementById(`productNum3_${id}`)?.value) || 0;
+        const num1 = parseNumber(document.getElementById(`productNum1_${id}`)?.value);
+        const num2 = parseNumber(document.getElementById(`productNum2_${id}`)?.value);
+        const num3 = parseNumber(document.getElementById(`productNum3_${id}`)?.value);
 
         if (quantity > 0 && weight > 0 && goldPrice > 0) {
             const soso = num1 / num2;
