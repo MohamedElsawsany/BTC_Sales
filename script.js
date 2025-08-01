@@ -135,12 +135,85 @@ const return_btc_products = [
     {name: "إسورة 30 جرام مجدول", weight: 30, stampEnduser: 8, num1: 1, num2: 1, num3: 0}
 ];
 
+const return_unpacked_btc_products = [
+    {name: "ربع جنيه", weight: 2, stampEnduser: 10, num1: 1, num2: 1, num3: 0},
+    {name: "نصف جنيه", weight: 4, stampEnduser: 10, num1: 1, num2: 1, num3: 0},
+    {name: "جنيه", weight: 8, stampEnduser: 10, num1: 1, num2: 1, num3: 0},
+    {name: "2.5 جنيه", weight: 20, stampEnduser: 10, num1: 1, num2: 1, num3: 0},
+    {name: "خمسة جنيه", weight: 40, stampEnduser: 10, num1: 1, num2: 1, num3: 0},
+    {name: "عشرة جنيه", weight: 80, stampEnduser: 10, num1: 1, num2: 1, num3: 0},
+
+    {name: "ربع جنيه تعليقة", weight: 2.35, stampEnduser: 8, num1: 1, num2: 1, num3: 0},
+    {name: "نصف جنيه تعليقه", weight: 4.35, stampEnduser: 8, num1: 1, num2: 1, num3: 0},
+    {name: "جنيه تعليقة", weight: 8.35, stampEnduser: 8, num1: 1, num2: 1, num3: 0},
+
+    {name: "ربع جنيه مارفال", weight: 2, stampEnduser: 10, num1: 1, num2: 1, num3: 0},
+    {name: "نصف جنيه مارفال", weight: 4, stampEnduser: 10, num1: 1, num2: 1, num3: 0},
+    {name: "جنيه مارفال", weight: 8, stampEnduser: 10, num1: 1, num2: 1, num3: 0},
+    {name: "5 جنيه مارفال", weight: 40, stampEnduser: 10, num1: 1, num2: 1, num3: 0},
+
+    // {name: "خاتم ربع جنيه", weight: 4, stampEnduser: 10, num1: 1, num2: 1, num3: 0},
+    // {name: "خاتم نصف جنيه", weight: 4, stampEnduser: 10, num1: 1, num2: 1, num3: 0},
+
+    {name: "سبيكة 1 جرام", weight: 1, stampEnduser: 10, num1: 999.9, num2: 875, num3: 0},
+    {name: "سبيكة 2.5 جرام", weight: 2.5, stampEnduser: 10, num1: 999.9, num2: 875, num3: 0},
+    {name: "سبيكة 5 جرام", weight: 5, stampEnduser: 10, num1: 999.9, num2: 875, num3: 0},
+    {name: "سبيكة 10 جرام", weight: 10, stampEnduser: 10, num1: 999.9, num2: 875, num3: 0},
+    {name: "سبيكة 20 جرام", weight: 20, stampEnduser: 10, num1: 999.9, num2: 875, num3: 0},
+    {name: "سبيكة 31.10 جرام", weight: 31.10, stampEnduser: 10, num1: 999.9, num2: 875, num3: 0},
+    {name: "سبيكة 50 جرام", weight: 50, stampEnduser: 10, num1: 999.9, num2: 875, num3: 0},
+    {name: "سبيكة 100 جرام", weight: 100, stampEnduser: 10, num1: 999.9, num2: 875, num3: 0},
+    {name: "سبيكة 116.65 جرام", weight: 116.65, stampEnduser: 10, num1: 999.9, num2: 875, num3: 0},
+
+    {name: "بيضاوي 5 جرام", weight: 5, stampEnduser: 10, num1: 999.9, num2: 875, num3: 0},
+    {name: "بيضاوي 10 جرام", weight: 10, stampEnduser: 10, num1: 999.9, num2: 875, num3: 0},
+    {name: "بيضاوي 15.90 جرام", weight: 15.90, stampEnduser: 10, num1: 999.9, num2: 875, num3: 0},
+    {name: "بيضاوي 31.45 جرام", weight: 31.45, stampEnduser: 10, num1: 999.9, num2: 875, num3: 0},
+
+    {name: "إسورة 15.55 جرام", weight: 15.55, stampEnduser: 12, num1: 999.9, num2: 875, num3: 0},
+    {name: "إسورة 31.10 جرام", weight: 31.10, stampEnduser: 12, num1: 999.9, num2: 875, num3: 0},
+
+    {name: "سبيكة ربع كيلو", weight: 250, stampEnduser: 10, num1: 999.9, num2: 875, num3: 0},
+    {name: "سبيكة نصف كيلو", weight: 500, stampEnduser: 10, num1: 999.9, num2: 875, num3: 0},
+    {name: "سبيكة 1 كيلو", weight: 1000, stampEnduser: 10, num1: 999.9, num2: 875, num3: 0},
+
+    {name: "ربع كيلو دائري", weight: 250, stampEnduser: 14, num1: 999.9, num2: 875, num3: 0},
+    {name: "نصف كيلو دائري", weight: 500, stampEnduser: 14, num1: 999.9, num2: 875, num3: 0},
+    {name: "1 كيلو دائري", weight: 1000, stampEnduser: 14, num1: 999.9, num2: 875, num3: 0},
+
+    {name: "هدايا 2.5 جرام", weight: 2.5, stampEnduser: 10, num1: 999.9, num2: 875, num3: 0},
+    {name: "هدايا 5 جرام", weight: 5, stampEnduser: 10, num1: 999.9, num2: 875, num3: 0},
+    {name: "هدايا 10 جرام", weight: 10, stampEnduser: 10, num1: 999.9, num2: 875, num3: 0},
+
+    {name: "سبيكة ديزني / مارفل 2.5 جرام", weight: 2.5, stampEnduser: 10, num1: 999.9, num2: 875, num3: 0},
+    {name: "سبيكة ديزني / مارفل 5 جرام", weight: 5, stampEnduser: 10, num1: 999.9, num2: 875, num3: 0},
+    {name: "سبيكة ديزني / مارفل 10 جرام", weight: 10, stampEnduser: 10, num1: 999.9, num2: 875, num3: 0},
+
+    {name: "قلب تعليقة", weight: 10.35, stampEnduser: 8, num1: 999.9, num2: 875, num3: 0},
+
+    {name: "الاميرات 5 جرام", weight: 5, stampEnduser: 10, num1: 999.9, num2: 875, num3: 0},
+    {name: "الاميرات 10 جرام", weight: 10, stampEnduser: 10, num1: 999.9, num2: 875, num3: 0},
+    {name: "الاميرات 15.9 جرام", weight: 15.9, stampEnduser: 10, num1: 999.9, num2: 875, num3: 0},
+    {name: "الاميرات 31.10 جرام", weight: 31.10, stampEnduser: 10, num1: 999.9, num2: 875, num3: 0},
+
+    {name: "31.10 جرام خريطة مصر", weight: 31.10, stampEnduser: 10, num1: 999.9, num2: 875, num3: 0},
+    {name: "31.10 جرام (السعودية)", weight: 31.10, stampEnduser: 10, num1: 999.9, num2: 875, num3: 0},
+
+    {name: "إسورة 30 جرام سادة", weight: 30, stampEnduser: 8, num1: 1, num2: 1, num3: 0},
+    {name: "إسورة 30 جرام مجدول", weight: 30, stampEnduser: 8, num1: 1, num2: 1, num3: 0}
+
+];
+
+
 let rowCount = 1;
 
 // Get current products array based on transaction type
 function getCurrentProducts() {
     const selectedType = document.querySelector('input[name="transactionType"]:checked').value;
-    return selectedType === 'sale' ? sale_btc_products : return_btc_products;
+    if (selectedType === 'sale') return sale_btc_products;
+    if (selectedType === 'return') return return_btc_products;
+    if (selectedType === 'returnUnpacked') return return_unpacked_btc_products;
+    return sale_btc_products; // Fallback to sale if something goes wrong
 }
 
 // Utility functions
