@@ -1,5 +1,5 @@
 const sale_btc_products = [
-    {name: "ربع جنيه", weight: 2, stampEnduser: 71, num1: 1, num2: 1, num3: 0},
+    {name: "ربع جنيه", weight: 2, stampEnduser: 1, num1: 1, num2: 1, num3: 0},
     {name: "نصف جنيه", weight: 4, stampEnduser: 66, num1: 1, num2: 1, num3: 0},
     {name: "جنيه", weight: 8, stampEnduser: 61, num1: 1, num2: 1, num3: 0},
     {name: "2.5 جنيه", weight: 20, stampEnduser: 56, num1: 1, num2: 1, num3: 0},
@@ -65,11 +65,83 @@ const sale_btc_products = [
     {name: "إسورة 30 جرام سادة", weight: 30, stampEnduser: 121, num1: 1, num2: 1, num3: 0},
     {name: "إسورة 30 جرام مجدول", weight: 30, stampEnduser: 126, num1: 1, num2: 1, num3: 0}
 
+];
 
+const return_btc_products = [
+    {name: "ربع جنيه", weight: 2, stampEnduser: 24, num1: 1, num2: 1, num3: 0},
+    {name: "نصف جنيه", weight: 4, stampEnduser: 25, num1: 1, num2: 1, num3: 0},
+    {name: "جنيه", weight: 8, stampEnduser: 24, num1: 1, num2: 1, num3: 0},
+    {name: "2.5 جنيه", weight: 20, stampEnduser: 24, num1: 1, num2: 1, num3: 0},
+    {name: "خمسة جنيه", weight: 40, stampEnduser: 24, num1: 1, num2: 1, num3: 0},
+    {name: "عشرة جنيه", weight: 80, stampEnduser: 24, num1: 1, num2: 1, num3: 0},
 
+    {name: "ربع جنيه تعليقة", weight: 2.35, stampEnduser: 8, num1: 1, num2: 1, num3: 0},
+    {name: "نصف جنيه تعليقه", weight: 4.35, stampEnduser: 8, num1: 1, num2: 1, num3: 0},
+    {name: "جنيه تعليقة", weight: 8.35, stampEnduser: 8, num1: 1, num2: 1, num3: 0},
+
+    {name: "ربع جنيه مارفال", weight: 2, stampEnduser: 24, num1: 1, num2: 1, num3: 0},
+    {name: "نصف جنيه مارفال", weight: 4, stampEnduser: 24, num1: 1, num2: 1, num3: 0},
+    {name: "جنيه مارفال", weight: 8, stampEnduser: 24, num1: 1, num2: 1, num3: 0},
+    {name: "5 جنيه مارفال", weight: 40, stampEnduser: 24, num1: 1, num2: 1, num3: 0},
+
+    // {name: "خاتم ربع جنيه", weight: 4, stampEnduser: 8, num1: 1, num2: 1, num3: 0},
+    // {name: "خاتم نصف جنيه", weight: 4, stampEnduser: 8, num1: 1, num2: 1, num3: 0},
+
+    {name: "سبيكة 1 جرام", weight: 1, stampEnduser: 28.5, num1: 999.9, num2: 875, num3: 0},
+    {name: "سبيكة 2.5 جرام", weight: 2.5, stampEnduser: 28.5, num1: 999.9, num2: 875, num3: 0},
+    {name: "سبيكة 5 جرام", weight: 5, stampEnduser: 28.5, num1: 999.9, num2: 875, num3: 0},
+    {name: "سبيكة 10 جرام", weight: 10, stampEnduser: 28.5, num1: 999.9, num2: 875, num3: 0},
+    {name: "سبيكة 20 جرام", weight: 20, stampEnduser: 28.5, num1: 999.9, num2: 875, num3: 0},
+    {name: "سبيكة 31.10 جرام", weight: 31.10, stampEnduser: 28.5, num1: 999.9, num2: 875, num3: 0},
+    {name: "سبيكة 50 جرام", weight: 50, stampEnduser: 28.5, num1: 999.9, num2: 875, num3: 0},
+    {name: "سبيكة 100 جرام", weight: 100, stampEnduser: 28.5, num1: 999.9, num2: 875, num3: 0},
+    {name: "سبيكة 116.65 جرام", weight: 116.65, stampEnduser: 17, num1: 999.9, num2: 875, num3: 0},
+
+    {name: "بيضاوي 5 جرام", weight: 5, stampEnduser: 28.5, num1: 999.9, num2: 875, num3: 0},
+    {name: "بيضاوي 10 جرام", weight: 10, stampEnduser: 28.5, num1: 999.9, num2: 875, num3: 0},
+    {name: "بيضاوي 15.90 جرام", weight: 15.90, stampEnduser: 28.5, num1: 999.9, num2: 875, num3: 0},
+    {name: "بيضاوي 31.45 جرام", weight: 31.45, stampEnduser: 28.5, num1: 999.9, num2: 875, num3: 0},
+
+    {name: "إسورة 15.55 جرام", weight: 15.55, stampEnduser: 13.5, num1: 999.9, num2: 875, num3: 0},
+    {name: "إسورة 31.10 جرام", weight: 31.10, stampEnduser: 13.5, num1: 999.9, num2: 875, num3: 0},
+
+    {name: "سبيكة ربع كيلو", weight: 250, stampEnduser: 12.2, num1: 999.9, num2: 875, num3: 0},
+    {name: "سبيكة نصف كيلو", weight: 500, stampEnduser: 12.1, num1: 999.9, num2: 875, num3: 0},
+    {name: "سبيكة 1 كيلو", weight: 1000, stampEnduser: 12.05, num1: 999.9, num2: 875, num3: 0},
+
+    {name: "ربع كيلو دائري", weight: 250, stampEnduser: 14, num1: 999.9, num2: 875, num3: 0},
+    {name: "نصف كيلو دائري", weight: 500, stampEnduser: 14, num1: 999.9, num2: 875, num3: 0},
+    {name: "1 كيلو دائري", weight: 1000, stampEnduser: 14, num1: 999.9, num2: 875, num3: 0},
+
+    {name: "هدايا 2.5 جرام", weight: 2.5, stampEnduser: 28.5, num1: 999.9, num2: 875, num3: 0},
+    {name: "هدايا 5 جرام", weight: 5, stampEnduser: 28.5, num1: 999.9, num2: 875, num3: 0},
+    {name: "هدايا 10 جرام", weight: 10, stampEnduser: 28.5, num1: 999.9, num2: 875, num3: 0},
+
+    {name: "سبيكة ديزني / مارفل 2.5 جرام", weight: 2.5, stampEnduser: 28.5, num1: 999.9, num2: 875, num3: 0},
+    {name: "سبيكة ديزني / مارفل 5 جرام", weight: 5, stampEnduser: 28.5, num1: 999.9, num2: 875, num3: 0},
+    {name: "سبيكة ديزني / مارفل 10 جرام", weight: 10, stampEnduser: 28.5, num1: 999.9, num2: 875, num3: 0},
+
+    {name: "قلب تعليقة", weight: 10.35, stampEnduser: 8, num1: 999.9, num2: 875, num3: 0},
+
+    {name: "الاميرات 5 جرام", weight: 5, stampEnduser: 28.5, num1: 999.9, num2: 875, num3: 0},
+    {name: "الاميرات 10 جرام", weight: 10, stampEnduser: 28.5, num1: 999.9, num2: 875, num3: 0},
+    {name: "الاميرات 15.9 جرام", weight: 15.9, stampEnduser: 28.5, num1: 999.9, num2: 875, num3: 0},
+    {name: "الاميرات 31.10 جرام", weight: 31.10, stampEnduser: 28.5, num1: 999.9, num2: 875, num3: 0},
+
+    {name: "31.10 جرام خريطة مصر", weight: 31.10, stampEnduser: 28.5, num1: 999.9, num2: 875, num3: 0},
+    {name: "31.10 جرام (السعودية)", weight: 31.10, stampEnduser: 28.5, num1: 999.9, num2: 875, num3: 0},
+
+    {name: "إسورة 30 جرام سادة", weight: 30, stampEnduser: 8, num1: 1, num2: 1, num3: 0},
+    {name: "إسورة 30 جرام مجدول", weight: 30, stampEnduser: 8, num1: 1, num2: 1, num3: 0}
 ];
 
 let rowCount = 1;
+
+// Get current products array based on transaction type
+function getCurrentProducts() {
+    const selectedType = document.querySelector('input[name="transactionType"]:checked').value;
+    return selectedType === 'sale' ? sale_btc_products : return_btc_products;
+}
 
 // Utility functions
 function formatMoney(value) {
@@ -103,12 +175,75 @@ function clearError(elementId) {
 }
 
 function populateProductSelect(select) {
+    const currentProducts = getCurrentProducts();
     select.innerHTML = `<option disabled value="0" selected>Select Product</option>`;
-    sale_btc_products.forEach((product, index) => {
+    currentProducts.forEach((product, index) => {
         const option = document.createElement("option");
         option.value = index + 1;
         option.textContent = product.name;
         select.appendChild(option);
+    });
+    // Initialize dataset to track the current product array
+    select.dataset.previousProducts = document.querySelector('input[name="transactionType"]:checked').value;
+}
+
+// Update all product selects when transaction type changes
+function updateAllProductSelects() {
+    const allSelects = document.querySelectorAll('select[name="productId[]"]');
+    const currentProducts = getCurrentProducts();
+
+    allSelects.forEach(select => {
+        // Store currently selected product name (if any)
+        const currentIndex = parseInt(select.value) - 1;
+        let selectedProductName = null;
+        if (currentIndex >= 0) {
+            const previousProducts = select.dataset.previousProducts === 'sale' ? sale_btc_products : return_btc_products;
+            selectedProductName = previousProducts[currentIndex]?.name;
+        }
+
+        // Update the dataset to track the current product array
+        select.dataset.previousProducts = document.querySelector('input[name="transactionType"]:checked').value;
+
+        // Repopulate with new products
+        populateProductSelect(select);
+
+        // Restore selection if the product exists in the new array
+        if (selectedProductName) {
+            const newIndex = currentProducts.findIndex(product => product.name === selectedProductName);
+            if (newIndex >= 0) {
+                select.value = newIndex + 1; // Set the correct index (1-based)
+                const rowId = select.id.split('_')[1];
+                const selectedProduct = currentProducts[newIndex];
+
+                // Restore product data
+                document.getElementById(`productWeight_${rowId}`).value = selectedProduct.weight;
+                document.getElementById(`productStampEnduser_${rowId}`).value = selectedProduct.stampEnduser;
+                document.getElementById(`productNum1_${rowId}`).value = selectedProduct.num1;
+                document.getElementById(`productNum2_${rowId}`).value = selectedProduct.num2;
+                document.getElementById(`productNum3_${rowId}`).value = selectedProduct.num3;
+            } else {
+                // Clear row data if product doesn't exist
+                const rowId = select.id.split('_')[1];
+                clearRowData(rowId);
+            }
+        } else {
+            // Clear row data if no product was previously selected
+            const rowId = select.id.split('_')[1];
+            clearRowData(rowId);
+        }
+    });
+
+    // Recalculate prices for all rows
+    calculateTotal();
+}
+
+function clearRowData(rowId) {
+    const fields = ['productWeight', 'productStampEnduser', 'productPrice', 'totalQtyProductPrice', 'productNum1', 'productNum2', 'productNum3'];
+    fields.forEach(field => {
+        const element = document.getElementById(`${field}_${rowId}`);
+        if (element) {
+            element.value = '';
+        }
     });
 }
 
@@ -143,9 +278,60 @@ function handleQuantityInput(input) {
     }
 }
 
+// Enhanced radio button functionality
+function initializeRadioButtons() {
+    const radioWrappers = document.querySelectorAll('.radio-wrapper');
+    const radioInputs = document.querySelectorAll('input[name="transactionType"]');
+
+    // Set initial state
+    updateRadioButtonStates();
+
+    // Add click event listeners to wrapper labels
+    radioWrappers.forEach(wrapper => {
+        wrapper.addEventListener('click', function() {
+            const radioInput = this.querySelector('input[type="radio"]');
+            if (radioInput && !radioInput.checked) {
+                radioInput.checked = true;
+                updateRadioButtonStates();
+                handleTransactionTypeChange();
+            }
+        });
+    });
+
+    // Add change event listeners to radio inputs
+    radioInputs.forEach(input => {
+        input.addEventListener('change', function() {
+            updateRadioButtonStates();
+            handleTransactionTypeChange();
+        });
+    });
+}
+
+function updateRadioButtonStates() {
+    const radioWrappers = document.querySelectorAll('.radio-wrapper');
+
+    radioWrappers.forEach(wrapper => {
+        const radioInput = wrapper.querySelector('input[type="radio"]');
+        if (radioInput.checked) {
+            wrapper.classList.add('selected');
+        } else {
+            wrapper.classList.remove('selected');
+        }
+    });
+}
+
+function handleTransactionTypeChange() {
+    const selectedType = document.querySelector('input[name="transactionType"]:checked').value;
+    console.log('Transaction type changed to:', selectedType);
+
+    // Update all product dropdowns
+    updateAllProductSelects();
+}
+
 // Event listeners
 document.addEventListener('DOMContentLoaded', () => {
     populateProductSelect(document.getElementById('productId_1'));
+    initializeRadioButtons();
 });
 
 document.addEventListener('change', function (e) {
@@ -153,9 +339,10 @@ document.addEventListener('change', function (e) {
         const select = e.target;
         const rowId = select.id.split('_')[1];
         const selectedIndex = select.selectedIndex - 1;
+        const currentProducts = getCurrentProducts();
 
-        if (selectedIndex >= 0 && selectedIndex < sale_btc_products.length) {
-            const selectedProduct = sale_btc_products[selectedIndex];
+        if (selectedIndex >= 0 && selectedIndex < currentProducts.length) {
+            const selectedProduct = currentProducts[selectedIndex];
 
             document.getElementById(`productWeight_${rowId}`).value = selectedProduct.weight;
             document.getElementById(`productStampEnduser_${rowId}`).value = selectedProduct.stampEnduser;
@@ -261,6 +448,7 @@ function validateGoldPrice() {
 function calculateItemPrices() {
     let totalAmount = 0;
     const goldPrice = parseNumber(document.getElementById('goldPrice').value);
+    const currentProducts = getCurrentProducts();
 
     document.querySelectorAll("[id^='productQty_']").forEach(function (element) {
         const id = element.id.split('_')[1];
