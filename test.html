@@ -490,6 +490,19 @@ body {
         white-space: nowrap;
     }
 }
+
+.btn-info {
+    background: #17a2b8;
+    color: white;
+    box-shadow: 0 4px 15px rgba(23, 162, 184, 0.3);
+}
+
+.btn-info:hover {
+    background: #138496;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(23, 162, 184, 0.4);
+}
+
     </style>
 </head>
 <body>
@@ -717,24 +730,23 @@ body {
                             </table>
                         </div>
 
-                        <div class="row mt-3">
-                            <div class="col-md-6">
-                                <div class="d-flex gap-2 btn-group-mobile">
-                                    <button class="btn btn-danger" id="removeRows" type="button">
-                                        <i class="fas fa-trash me-2"></i>Delete Selected
-                                    </button>
-                                    <button class="btn btn-success" id="addRows" type="button">
-                                        <i class="fas fa-plus me-2"></i>Add Row
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-md-6 text-end">
-                                <small class="text-muted">
-                                    <i class="fas fa-info-circle me-1"></i>
-                                    Select products and enter quantities to calculate prices
-                                </small>
-                            </div>
-                        </div>
+<div class="row mt-3">
+    <div class="col-md-8">
+        <div class="d-flex gap-2 btn-group-mobile">
+            <button class="btn btn-danger" id="removeRows" type="button">
+                <i class="fas fa-trash me-2"></i>Delete Selected
+            </button>
+            <button class="btn btn-success" id="addRows" type="button">
+                <i class="fas fa-plus me-2"></i>Add Row
+            </button>
+        </div>
+    </div>
+    <div class="col-md-4 text-end">
+        <button class="btn btn-info" id="printInvoice" type="button">
+            <i class="fas fa-print me-2"></i>Print
+        </button>
+    </div>
+</div>
                     </div>
 
                     <!-- Total Section -->
