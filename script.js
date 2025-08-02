@@ -1,219 +1,90 @@
-const sale_btc_products = [
-    {name: "ربع جنيه", weight: 2, stampEnduser: 71, num1: 1, num2: 1, num3: 0},
-    {name: "نصف جنيه", weight: 4, stampEnduser: 66, num1: 1, num2: 1, num3: 0},
-    {name: "جنيه", weight: 8, stampEnduser: 61, num1: 1, num2: 1, num3: 0},
-    {name: "2.5 جنيه", weight: 20, stampEnduser: 56, num1: 1, num2: 1, num3: 0},
-    {name: "خمسة جنيه", weight: 40, stampEnduser: 53, num1: 1, num2: 1, num3: 0},
-    {name: "عشرة جنيه", weight: 80, stampEnduser: 51, num1: 1, num2: 1, num3: 0},
 
-    {name: "ربع جنيه تعليقة", weight: 2.35, stampEnduser: 86, num1: 1, num2: 1, num3: 0},
-    {name: "نصف جنيه تعليقه", weight: 4.35, stampEnduser: 81, num1: 1, num2: 1, num3: 0},
-    {name: "جنيه تعليقة", weight: 8.35, stampEnduser: 76, num1: 1, num2: 1, num3: 0},
+    const sale_btc_products = [
+    {name: "ربع جنيه", weight: 2, stampEnduser: 71, cashback: 24, cashbackunpacking: 10, num1: 1, num2: 1},
+    {name: "نصف جنيه", weight: 4, stampEnduser: 66, cashback: 24, cashbackunpacking: 10, num1: 1, num2: 1},
+    {name: "جنيه", weight: 8, stampEnduser: 61, cashback: 24, cashbackunpacking: 10, num1: 1, num2: 1},
+    {name: "2.5 جنيه", weight: 20, stampEnduser: 56, cashback: 24, cashbackunpacking: 10, num1: 1, num2: 1},
+    {name: "خمسة جنيه", weight: 40, stampEnduser: 53, cashback: 24, cashbackunpacking: 10, num1: 1, num2: 1},
+    {name: "عشرة جنيه", weight: 80, stampEnduser: 51, cashback: 24, cashbackunpacking: 10, num1: 1, num2: 1},
+    
+    {name: "ربع جنيه تعليقة", weight: 2.35, stampEnduser: 86, cashback: 8, cashbackunpacking: 8, num1: 1, num2: 1},
+    {name: "نصف جنيه تعليقه", weight: 4.35, stampEnduser: 81, cashback: 8, cashbackunpacking: 8, num1: 1, num2: 1},
+    {name: "جنيه تعليقة", weight: 8.35, stampEnduser: 76, cashback: 8, cashbackunpacking: 8, num1: 1, num2: 1},
 
-    {name: "ربع جنيه مارفال", weight: 2, stampEnduser: 76, num1: 1, num2: 1, num3: 0},
-    {name: "نصف جنيه مارفال", weight: 4, stampEnduser: 71, num1: 1, num2: 1, num3: 0},
-    {name: "جنيه مارفال", weight: 8, stampEnduser: 61, num1: 1, num2: 1, num3: 0},
-    {name: "5 جنيه مارفال", weight: 40, stampEnduser: 56, num1: 1, num2: 1, num3: 0},
+    {name: "ربع جنيه مارفال", weight: 2, stampEnduser: 76, cashback: 24, cashbackunpacking: 10, num1: 1, num2: 1},
+    {name: "نصف جنيه مارفال", weight: 4, stampEnduser: 71, cashback: 24, cashbackunpacking: 10, num1: 1, num2: 1},
+    {name: "جنيه مارفال", weight: 8, stampEnduser: 61, cashback: 24, cashbackunpacking: 10, num1: 1, num2: 1},
+    {name: "5 جنيه مارفال", weight: 40, stampEnduser: 56, cashback: 24, cashbackunpacking: 10, num1: 1, num2: 1},
 
-    // {name: "خاتم ربع جنيه", weight: 4, stampEnduser: 136, num1: 1, num2: 1, num3: 0},
-    // {name: "خاتم نصف جنيه", weight: 4, stampEnduser: 126, num1: 1, num2: 1, num3: 0},
+    {name: "سبيكة 1 جرام", weight: 1, stampEnduser: 172, cashback: 28.5, cashbackunpacking: 10, num1: 999.9, num2: 875},
+    {name: "سبيكة 2.5 جرام", weight: 2.5, stampEnduser: 97, cashback: 28.5, cashbackunpacking: 10, num1: 999.9, num2: 875},
+    {name: "سبيكة 5 جرام", weight: 5, stampEnduser: 72, cashback: 28.5, cashbackunpacking: 10, num1: 999.9, num2: 875},
+    {name: "سبيكة 10 جرام", weight: 10, stampEnduser: 70, cashback: 28.5, cashbackunpacking: 10, num1: 999.9, num2: 875},
+    {name: "سبيكة 20 جرام", weight: 20, stampEnduser: 67, cashback: 28.5, cashbackunpacking: 10, num1: 999.9, num2: 875},
+    {name: "سبيكة 31.10 جرام", weight: 31.10, stampEnduser: 66, cashback: 28.5, cashbackunpacking: 10, num1: 999.9, num2: 875},
+    {name: "سبيكة 50 جرام", weight: 50, stampEnduser: 64, cashback: 28.5, cashbackunpacking: 10, num1: 999.9, num2: 875},
+    {name: "سبيكة 100 جرام", weight: 100, stampEnduser: 62, cashback: 28.5, cashbackunpacking: 10, num1: 999.9, num2: 875},
+    {name: "سبيكة 116.65 جرام", weight: 116.65, stampEnduser: 51, cashback: 17, cashbackunpacking: 10, num1: 999.9, num2: 875},
 
-    {name: "سبيكة 1 جرام", weight: 1, stampEnduser: 172, num1: 999.9, num2: 875, num3: 0},
-    {name: "سبيكة 2.5 جرام", weight: 2.5, stampEnduser: 97, num1: 999.9, num2: 875, num3: 0},
-    {name: "سبيكة 5 جرام", weight: 5, stampEnduser: 72, num1: 999.9, num2: 875, num3: 0},
-    {name: "سبيكة 10 جرام", weight: 10, stampEnduser: 70, num1: 999.9, num2: 875, num3: 0},
-    {name: "سبيكة 20 جرام", weight: 20, stampEnduser: 67, num1: 999.9, num2: 875, num3: 0},
-    {name: "سبيكة 31.10 جرام", weight: 31.10, stampEnduser: 66, num1: 999.9, num2: 875, num3: 0},
-    {name: "سبيكة 50 جرام", weight: 50, stampEnduser: 64, num1: 999.9, num2: 875, num3: 0},
-    {name: "سبيكة 100 جرام", weight: 100, stampEnduser: 62, num1: 999.9, num2: 875, num3: 0},
-    {name: "سبيكة 116.65 جرام", weight: 116.65, stampEnduser: 51, num1: 999.9, num2: 875, num3: 0},
+    {name: "بيضاوي 5 جرام", weight: 5, stampEnduser: 87, cashback: 28.5, cashbackunpacking: 10, num1: 999.9, num2: 875},
+    {name: "بيضاوي 10 جرام", weight: 10, stampEnduser: 82, cashback: 28.5, cashbackunpacking: 10, num1: 999.9, num2: 875},
+    {name: "بيضاوي 15.90 جرام", weight: 15.90, stampEnduser: 80, cashback: 28.5, cashbackunpacking: 10, num1: 999.9, num2: 875},
+    {name: "بيضاوي 31.45 جرام", weight: 31.45, stampEnduser: 77, cashback: 28.5, cashbackunpacking: 10, num1: 999.9, num2: 875},
 
-    {name: "بيضاوي 5 جرام", weight: 5, stampEnduser: 87, num1: 999.9, num2: 875, num3: 0},
-    {name: "بيضاوي 10 جرام", weight: 10, stampEnduser: 82, num1: 999.9, num2: 875, num3: 0},
-    {name: "بيضاوي 15.90 جرام", weight: 15.90, stampEnduser: 80, num1: 999.9, num2: 875, num3: 0},
-    {name: "بيضاوي 31.45 جرام", weight: 31.45, stampEnduser: 77, num1: 999.9, num2: 875, num3: 0},
+    {name: "إسورة 15.55 جرام", weight: 15.55, stampEnduser: 102, cashback: 13.5, cashbackunpacking: 12, num1: 999.9, num2: 875},
+    {name: "إسورة 31.10 جرام", weight: 31.10, stampEnduser: 117, cashback: 13.5, cashbackunpacking: 12, num1: 999.9, num2: 875},
 
-    {name: "إسورة 15.55 جرام", weight: 15.55, stampEnduser: 102, num1: 999.9, num2: 875, num3: 0},
-    {name: "إسورة 31.10 جرام", weight: 31.10, stampEnduser: 117, num1: 999.9, num2: 875, num3: 0},
+    {name: "سبيكة ربع كيلو", weight: 250, stampEnduser: 31, cashback: 12.2, cashbackunpacking: 10, num1: 999.9, num2: 875},
+    {name: "سبيكة نصف كيلو", weight: 500, stampEnduser: 29, cashback: 12.1, cashbackunpacking: 10, num1: 999.9, num2: 875},
+    {name: "سبيكة 1 كيلو", weight: 1000, stampEnduser: 27, cashback: 12.05, cashbackunpacking: 10, num1: 999.9, num2: 875},
 
-    {name: "سبيكة ربع كيلو", weight: 250, stampEnduser: 31, num1: 999.9, num2: 875, num3: 0},
-    {name: "سبيكة نصف كيلو", weight: 500, stampEnduser: 29, num1: 999.9, num2: 875, num3: 0},
-    {name: "سبيكة 1 كيلو", weight: 1000, stampEnduser: 27, num1: 999.9, num2: 875, num3: 0},
+    {name: "ربع كيلو دائري", weight: 250, stampEnduser: 32.25, cashback: 14, cashbackunpacking: 14, num1: 999.9, num2: 875},
+    {name: "نصف كيلو دائري", weight: 500, stampEnduser: 31.75, cashback: 14, cashbackunpacking: 14, num1: 999.9, num2: 875},
+    {name: "1 كيلو دائري", weight: 1000, stampEnduser: 31, cashback: 14, cashbackunpacking: 14, num1: 999.9, num2: 875},
 
-    {name: "ربع كيلو دائري", weight: 250, stampEnduser: 32.25, num1: 999.9, num2: 875, num3: 0},
-    {name: "نصف كيلو دائري", weight: 500, stampEnduser: 31.75, num1: 999.9, num2: 875, num3: 0},
-    {name: "1 كيلو دائري", weight: 1000, stampEnduser: 31, num1: 999.9, num2: 875, num3: 0},
+    {name: "هدايا 2.5 جرام", weight: 2.5, stampEnduser: 117, cashback: 28.5, cashbackunpacking: 10, num1: 999.9, num2: 875},
+    {name: "هدايا 5 جرام", weight: 5, stampEnduser: 107, cashback: 28.5, cashbackunpacking: 10, num1: 999.9, num2: 875},
+    {name: "هدايا 10 جرام", weight: 10, stampEnduser: 93, cashback: 28.5, cashbackunpacking: 10, num1: 999.9, num2: 875},
 
-    {name: "هدايا 2.5 جرام", weight: 2.5, stampEnduser: 117, num1: 999.9, num2: 875, num3: 0},
-    {name: "هدايا 5 جرام", weight: 5, stampEnduser: 107, num1: 999.9, num2: 875, num3: 0},
-    {name: "هدايا 10 جرام", weight: 10, stampEnduser: 93, num1: 999.9, num2: 875, num3: 0},
+    {name: "سبيكة ديزني / مارفل 2.5 جرام", weight: 2.5, stampEnduser: 112, cashback: 28.5, cashbackunpacking: 10, num1: 999.9, num2: 875},
+    {name: "سبيكة ديزني / مارفل 5 جرام", weight: 5, stampEnduser: 77, cashback: 28.5, cashbackunpacking: 10, num1: 999.9, num2: 875},
+    {name: "سبيكة ديزني / مارفل 10 جرام", weight: 10, stampEnduser: 74, cashback: 28.5, cashbackunpacking: 10, num1: 999.9, num2: 875},
 
-    {name: "سبيكة ديزني / مارفل 2.5 جرام", weight: 2.5, stampEnduser: 112, num1: 999.9, num2: 875, num3: 0},
-    {name: "سبيكة ديزني / مارفل 5 جرام", weight: 5, stampEnduser: 77, num1: 999.9, num2: 875, num3: 0},
-    {name: "سبيكة ديزني / مارفل 10 جرام", weight: 10, stampEnduser: 74, num1: 999.9, num2: 875, num3: 0},
+    {name: "قلب تعليقة", weight: 10.35, stampEnduser: 72, cashback: 8, cashbackunpacking: 8, num1: 999.9, num2: 875},
 
-    {name: "قلب تعليقة", weight: 10.35, stampEnduser: 72, num1: 999.9, num2: 875, num3: 0},
+    {name: "الاميرات 5 جرام", weight: 5, stampEnduser: 107, cashback: 28.5, cashbackunpacking: 10, num1: 999.9, num2: 875},
+    {name: "الاميرات 10 جرام", weight: 10, stampEnduser: 102, cashback: 28.5, cashbackunpacking: 10, num1: 999.9, num2: 875},
+    {name: "الاميرات 15.9 جرام", weight: 15.9, stampEnduser: 97, cashback: 28.5, cashbackunpacking: 10, num1: 999.9, num2: 875},
+    {name: "الاميرات 31.10 جرام", weight: 31.10, stampEnduser: 92, cashback: 28.5, cashbackunpacking: 10, num1: 999.9, num2: 875},
 
-    {name: "الاميرات 5 جرام", weight: 5, stampEnduser: 107, num1: 999.9, num2: 875, num3: 0},
-    {name: "الاميرات 10 جرام", weight: 10, stampEnduser: 102, num1: 999.9, num2: 875, num3: 0},
-    {name: "الاميرات 15.9 جرام", weight: 15.9, stampEnduser: 97, num1: 999.9, num2: 875, num3: 0},
-    {name: "الاميرات 31.10 جرام", weight: 31.10, stampEnduser: 92, num1: 999.9, num2: 875, num3: 0},
+    {name: "31.10 جرام خريطة مصر", weight: 31.10, stampEnduser: 72, cashback: 28.5, cashbackunpacking: 10, num1: 999.9, num2: 875},
+    {name: "31.10 جرام (السعودية)", weight: 31.10, stampEnduser: 72, cashback: 28.5, cashbackunpacking: 10, num1: 999.9, num2: 875},
 
-    {name: "31.10 جرام خريطة مصر", weight: 31.10, stampEnduser: 72, num1: 999.9, num2: 875, num3: 0},
-    {name: "31.10 جرام (السعودية)", weight: 31.10, stampEnduser: 72, num1: 999.9, num2: 875, num3: 0},
-
-    {name: "إسورة 30 جرام سادة", weight: 30, stampEnduser: 121, num1: 1, num2: 1, num3: 0},
-    {name: "إسورة 30 جرام مجدول", weight: 30, stampEnduser: 126, num1: 1, num2: 1, num3: 0}
+    {name: "إسورة 30 جرام سادة", weight: 30, stampEnduser: 121, cashback: 8, cashbackunpacking: 8, num1: 1, num2: 1},
+    {name: "إسورة 30 جرام مجدول", weight: 30, stampEnduser: 126, cashback: 8, cashbackunpacking: 8, num1: 1, num2: 1}
 
 ];
-
-const return_btc_products = [
-    {name: "ربع جنيه", weight: 2, stampEnduser: 24, num1: 1, num2: 1, num3: 0},
-    {name: "نصف جنيه", weight: 4, stampEnduser: 25, num1: 1, num2: 1, num3: 0},
-    {name: "جنيه", weight: 8, stampEnduser: 24, num1: 1, num2: 1, num3: 0},
-    {name: "2.5 جنيه", weight: 20, stampEnduser: 24, num1: 1, num2: 1, num3: 0},
-    {name: "خمسة جنيه", weight: 40, stampEnduser: 24, num1: 1, num2: 1, num3: 0},
-    {name: "عشرة جنيه", weight: 80, stampEnduser: 24, num1: 1, num2: 1, num3: 0},
-
-    {name: "ربع جنيه تعليقة", weight: 2.35, stampEnduser: 8, num1: 1, num2: 1, num3: 0},
-    {name: "نصف جنيه تعليقه", weight: 4.35, stampEnduser: 8, num1: 1, num2: 1, num3: 0},
-    {name: "جنيه تعليقة", weight: 8.35, stampEnduser: 8, num1: 1, num2: 1, num3: 0},
-
-    {name: "ربع جنيه مارفال", weight: 2, stampEnduser: 24, num1: 1, num2: 1, num3: 0},
-    {name: "نصف جنيه مارفال", weight: 4, stampEnduser: 24, num1: 1, num2: 1, num3: 0},
-    {name: "جنيه مارفال", weight: 8, stampEnduser: 24, num1: 1, num2: 1, num3: 0},
-    {name: "5 جنيه مارفال", weight: 40, stampEnduser: 24, num1: 1, num2: 1, num3: 0},
-
-    // {name: "خاتم ربع جنيه", weight: 4, stampEnduser: 8, num1: 1, num2: 1, num3: 0},
-    // {name: "خاتم نصف جنيه", weight: 4, stampEnduser: 8, num1: 1, num2: 1, num3: 0},
-
-    {name: "سبيكة 1 جرام", weight: 1, stampEnduser: 28.5, num1: 999.9, num2: 875, num3: 0},
-    {name: "سبيكة 2.5 جرام", weight: 2.5, stampEnduser: 28.5, num1: 999.9, num2: 875, num3: 0},
-    {name: "سبيكة 5 جرام", weight: 5, stampEnduser: 28.5, num1: 999.9, num2: 875, num3: 0},
-    {name: "سبيكة 10 جرام", weight: 10, stampEnduser: 28.5, num1: 999.9, num2: 875, num3: 0},
-    {name: "سبيكة 20 جرام", weight: 20, stampEnduser: 28.5, num1: 999.9, num2: 875, num3: 0},
-    {name: "سبيكة 31.10 جرام", weight: 31.10, stampEnduser: 28.5, num1: 999.9, num2: 875, num3: 0},
-    {name: "سبيكة 50 جرام", weight: 50, stampEnduser: 28.5, num1: 999.9, num2: 875, num3: 0},
-    {name: "سبيكة 100 جرام", weight: 100, stampEnduser: 28.5, num1: 999.9, num2: 875, num3: 0},
-    {name: "سبيكة 116.65 جرام", weight: 116.65, stampEnduser: 17, num1: 999.9, num2: 875, num3: 0},
-
-    {name: "بيضاوي 5 جرام", weight: 5, stampEnduser: 28.5, num1: 999.9, num2: 875, num3: 0},
-    {name: "بيضاوي 10 جرام", weight: 10, stampEnduser: 28.5, num1: 999.9, num2: 875, num3: 0},
-    {name: "بيضاوي 15.90 جرام", weight: 15.90, stampEnduser: 28.5, num1: 999.9, num2: 875, num3: 0},
-    {name: "بيضاوي 31.45 جرام", weight: 31.45, stampEnduser: 28.5, num1: 999.9, num2: 875, num3: 0},
-
-    {name: "إسورة 15.55 جرام", weight: 15.55, stampEnduser: 13.5, num1: 999.9, num2: 875, num3: 0},
-    {name: "إسورة 31.10 جرام", weight: 31.10, stampEnduser: 13.5, num1: 999.9, num2: 875, num3: 0},
-
-    {name: "سبيكة ربع كيلو", weight: 250, stampEnduser: 12.2, num1: 999.9, num2: 875, num3: 0},
-    {name: "سبيكة نصف كيلو", weight: 500, stampEnduser: 12.1, num1: 999.9, num2: 875, num3: 0},
-    {name: "سبيكة 1 كيلو", weight: 1000, stampEnduser: 12.05, num1: 999.9, num2: 875, num3: 0},
-
-    {name: "ربع كيلو دائري", weight: 250, stampEnduser: 14, num1: 999.9, num2: 875, num3: 0},
-    {name: "نصف كيلو دائري", weight: 500, stampEnduser: 14, num1: 999.9, num2: 875, num3: 0},
-    {name: "1 كيلو دائري", weight: 1000, stampEnduser: 14, num1: 999.9, num2: 875, num3: 0},
-
-    {name: "هدايا 2.5 جرام", weight: 2.5, stampEnduser: 28.5, num1: 999.9, num2: 875, num3: 0},
-    {name: "هدايا 5 جرام", weight: 5, stampEnduser: 28.5, num1: 999.9, num2: 875, num3: 0},
-    {name: "هدايا 10 جرام", weight: 10, stampEnduser: 28.5, num1: 999.9, num2: 875, num3: 0},
-
-    {name: "سبيكة ديزني / مارفل 2.5 جرام", weight: 2.5, stampEnduser: 28.5, num1: 999.9, num2: 875, num3: 0},
-    {name: "سبيكة ديزني / مارفل 5 جرام", weight: 5, stampEnduser: 28.5, num1: 999.9, num2: 875, num3: 0},
-    {name: "سبيكة ديزني / مارفل 10 جرام", weight: 10, stampEnduser: 28.5, num1: 999.9, num2: 875, num3: 0},
-
-    {name: "قلب تعليقة", weight: 10.35, stampEnduser: 8, num1: 999.9, num2: 875, num3: 0},
-
-    {name: "الاميرات 5 جرام", weight: 5, stampEnduser: 28.5, num1: 999.9, num2: 875, num3: 0},
-    {name: "الاميرات 10 جرام", weight: 10, stampEnduser: 28.5, num1: 999.9, num2: 875, num3: 0},
-    {name: "الاميرات 15.9 جرام", weight: 15.9, stampEnduser: 28.5, num1: 999.9, num2: 875, num3: 0},
-    {name: "الاميرات 31.10 جرام", weight: 31.10, stampEnduser: 28.5, num1: 999.9, num2: 875, num3: 0},
-
-    {name: "31.10 جرام خريطة مصر", weight: 31.10, stampEnduser: 28.5, num1: 999.9, num2: 875, num3: 0},
-    {name: "31.10 جرام (السعودية)", weight: 31.10, stampEnduser: 28.5, num1: 999.9, num2: 875, num3: 0},
-
-    {name: "إسورة 30 جرام سادة", weight: 30, stampEnduser: 8, num1: 1, num2: 1, num3: 0},
-    {name: "إسورة 30 جرام مجدول", weight: 30, stampEnduser: 8, num1: 1, num2: 1, num3: 0}
-];
-
-const return_unpacked_btc_products = [
-    {name: "ربع جنيه", weight: 2, stampEnduser: 10, num1: 1, num2: 1, num3: 0},
-    {name: "نصف جنيه", weight: 4, stampEnduser: 10, num1: 1, num2: 1, num3: 0},
-    {name: "جنيه", weight: 8, stampEnduser: 10, num1: 1, num2: 1, num3: 0},
-    {name: "2.5 جنيه", weight: 20, stampEnduser: 10, num1: 1, num2: 1, num3: 0},
-    {name: "خمسة جنيه", weight: 40, stampEnduser: 10, num1: 1, num2: 1, num3: 0},
-    {name: "عشرة جنيه", weight: 80, stampEnduser: 10, num1: 1, num2: 1, num3: 0},
-
-    {name: "ربع جنيه تعليقة", weight: 2.35, stampEnduser: 8, num1: 1, num2: 1, num3: 0},
-    {name: "نصف جنيه تعليقه", weight: 4.35, stampEnduser: 8, num1: 1, num2: 1, num3: 0},
-    {name: "جنيه تعليقة", weight: 8.35, stampEnduser: 8, num1: 1, num2: 1, num3: 0},
-
-    {name: "ربع جنيه مارفال", weight: 2, stampEnduser: 10, num1: 1, num2: 1, num3: 0},
-    {name: "نصف جنيه مارفال", weight: 4, stampEnduser: 10, num1: 1, num2: 1, num3: 0},
-    {name: "جنيه مارفال", weight: 8, stampEnduser: 10, num1: 1, num2: 1, num3: 0},
-    {name: "5 جنيه مارفال", weight: 40, stampEnduser: 10, num1: 1, num2: 1, num3: 0},
-
-    // {name: "خاتم ربع جنيه", weight: 4, stampEnduser: 10, num1: 1, num2: 1, num3: 0},
-    // {name: "خاتم نصف جنيه", weight: 4, stampEnduser: 10, num1: 1, num2: 1, num3: 0},
-
-    {name: "سبيكة 1 جرام", weight: 1, stampEnduser: 10, num1: 999.9, num2: 875, num3: 0},
-    {name: "سبيكة 2.5 جرام", weight: 2.5, stampEnduser: 10, num1: 999.9, num2: 875, num3: 0},
-    {name: "سبيكة 5 جرام", weight: 5, stampEnduser: 10, num1: 999.9, num2: 875, num3: 0},
-    {name: "سبيكة 10 جرام", weight: 10, stampEnduser: 10, num1: 999.9, num2: 875, num3: 0},
-    {name: "سبيكة 20 جرام", weight: 20, stampEnduser: 10, num1: 999.9, num2: 875, num3: 0},
-    {name: "سبيكة 31.10 جرام", weight: 31.10, stampEnduser: 10, num1: 999.9, num2: 875, num3: 0},
-    {name: "سبيكة 50 جرام", weight: 50, stampEnduser: 10, num1: 999.9, num2: 875, num3: 0},
-    {name: "سبيكة 100 جرام", weight: 100, stampEnduser: 10, num1: 999.9, num2: 875, num3: 0},
-    {name: "سبيكة 116.65 جرام", weight: 116.65, stampEnduser: 10, num1: 999.9, num2: 875, num3: 0},
-
-    {name: "بيضاوي 5 جرام", weight: 5, stampEnduser: 10, num1: 999.9, num2: 875, num3: 0},
-    {name: "بيضاوي 10 جرام", weight: 10, stampEnduser: 10, num1: 999.9, num2: 875, num3: 0},
-    {name: "بيضاوي 15.90 جرام", weight: 15.90, stampEnduser: 10, num1: 999.9, num2: 875, num3: 0},
-    {name: "بيضاوي 31.45 جرام", weight: 31.45, stampEnduser: 10, num1: 999.9, num2: 875, num3: 0},
-
-    {name: "إسورة 15.55 جرام", weight: 15.55, stampEnduser: 12, num1: 999.9, num2: 875, num3: 0},
-    {name: "إسورة 31.10 جرام", weight: 31.10, stampEnduser: 12, num1: 999.9, num2: 875, num3: 0},
-
-    {name: "سبيكة ربع كيلو", weight: 250, stampEnduser: 10, num1: 999.9, num2: 875, num3: 0},
-    {name: "سبيكة نصف كيلو", weight: 500, stampEnduser: 10, num1: 999.9, num2: 875, num3: 0},
-    {name: "سبيكة 1 كيلو", weight: 1000, stampEnduser: 10, num1: 999.9, num2: 875, num3: 0},
-
-    {name: "ربع كيلو دائري", weight: 250, stampEnduser: 14, num1: 999.9, num2: 875, num3: 0},
-    {name: "نصف كيلو دائري", weight: 500, stampEnduser: 14, num1: 999.9, num2: 875, num3: 0},
-    {name: "1 كيلو دائري", weight: 1000, stampEnduser: 14, num1: 999.9, num2: 875, num3: 0},
-
-    {name: "هدايا 2.5 جرام", weight: 2.5, stampEnduser: 10, num1: 999.9, num2: 875, num3: 0},
-    {name: "هدايا 5 جرام", weight: 5, stampEnduser: 10, num1: 999.9, num2: 875, num3: 0},
-    {name: "هدايا 10 جرام", weight: 10, stampEnduser: 10, num1: 999.9, num2: 875, num3: 0},
-
-    {name: "سبيكة ديزني / مارفل 2.5 جرام", weight: 2.5, stampEnduser: 10, num1: 999.9, num2: 875, num3: 0},
-    {name: "سبيكة ديزني / مارفل 5 جرام", weight: 5, stampEnduser: 10, num1: 999.9, num2: 875, num3: 0},
-    {name: "سبيكة ديزني / مارفل 10 جرام", weight: 10, stampEnduser: 10, num1: 999.9, num2: 875, num3: 0},
-
-    {name: "قلب تعليقة", weight: 10.35, stampEnduser: 8, num1: 999.9, num2: 875, num3: 0},
-
-    {name: "الاميرات 5 جرام", weight: 5, stampEnduser: 10, num1: 999.9, num2: 875, num3: 0},
-    {name: "الاميرات 10 جرام", weight: 10, stampEnduser: 10, num1: 999.9, num2: 875, num3: 0},
-    {name: "الاميرات 15.9 جرام", weight: 15.9, stampEnduser: 10, num1: 999.9, num2: 875, num3: 0},
-    {name: "الاميرات 31.10 جرام", weight: 31.10, stampEnduser: 10, num1: 999.9, num2: 875, num3: 0},
-
-    {name: "31.10 جرام خريطة مصر", weight: 31.10, stampEnduser: 10, num1: 999.9, num2: 875, num3: 0},
-    {name: "31.10 جرام (السعودية)", weight: 31.10, stampEnduser: 10, num1: 999.9, num2: 875, num3: 0},
-
-    {name: "إسورة 30 جرام سادة", weight: 30, stampEnduser: 8, num1: 1, num2: 1, num3: 0},
-    {name: "إسورة 30 جرام مجدول", weight: 30, stampEnduser: 8, num1: 1, num2: 1, num3: 0}
-
-];
-
 
 let rowCount = 1;
 
 // Get current products array based on transaction type
 function getCurrentProducts() {
     const selectedType = document.querySelector('input[name="transactionType"]:checked').value;
-    if (selectedType === 'sale') return sale_btc_products;
-    if (selectedType === 'return') return return_btc_products;
-    if (selectedType === 'returnUnpacked') return return_unpacked_btc_products;
-    return sale_btc_products; // Fallback to sale if something goes wrong
+    return sale_btc_products; // Using same products array but different values based on transaction type
+}
+
+// Get the appropriate stamp/enduser value based on transaction type
+function getStampEnduserValue(product, transactionType) {
+    switch (transactionType) {
+        case 'sale':
+            return product.stampEnduser;
+        case 'return':
+            return product.cashback;
+        case 'returnUnpacked':
+            return product.cashbackunpacking;
+        default:
+            return product.stampEnduser;
+    }
 }
 
 // Utility functions
@@ -256,54 +127,36 @@ function populateProductSelect(select) {
         option.textContent = product.name;
         select.appendChild(option);
     });
-    // Initialize dataset to track the current product array
-    select.dataset.previousProducts = document.querySelector('input[name="transactionType"]:checked').value;
+    // Initialize dataset to track the current transaction type
+    select.dataset.previousTransactionType = document.querySelector('input[name="transactionType"]:checked').value;
 }
 
-// Update all product selects when transaction type changes
-function updateAllProductSelects() {
+// Update all product rows when transaction type changes
+function updateAllProductRows() {
+    const selectedTransactionType = document.querySelector('input[name="transactionType"]:checked').value;
     const allSelects = document.querySelectorAll('select[name="productId[]"]');
     const currentProducts = getCurrentProducts();
 
     allSelects.forEach(select => {
-        // Store currently selected product name (if any)
-        const currentIndex = parseInt(select.value) - 1;
-        let selectedProductName = null;
-        if (currentIndex >= 0) {
-            const previousProducts = select.dataset.previousProducts === 'sale' ? sale_btc_products : return_btc_products;
-            selectedProductName = previousProducts[currentIndex]?.name;
+        const rowId = select.id.split('_')[1];
+        const selectedIndex = parseInt(select.value) - 1;
+
+        // If a product is selected, update its stamp/enduser value
+        if (selectedIndex >= 0 && selectedIndex < currentProducts.length) {
+            const selectedProduct = currentProducts[selectedIndex];
+            const stampEnduserValue = getStampEnduserValue(selectedProduct, selectedTransactionType);
+
+            // Update the stamp/enduser value for this row
+            document.getElementById(`productStampEnduser_${rowId}`).value = stampEnduserValue;
+
+            // Keep other values the same
+            document.getElementById(`productWeight_${rowId}`).value = selectedProduct.weight;
+            document.getElementById(`productNum1_${rowId}`).value = selectedProduct.num1;
+            document.getElementById(`productNum2_${rowId}`).value = selectedProduct.num2;
         }
 
-        // Update the dataset to track the current product array
-        select.dataset.previousProducts = document.querySelector('input[name="transactionType"]:checked').value;
-
-        // Repopulate with new products
-        populateProductSelect(select);
-
-        // Restore selection if the product exists in the new array
-        if (selectedProductName) {
-            const newIndex = currentProducts.findIndex(product => product.name === selectedProductName);
-            if (newIndex >= 0) {
-                select.value = newIndex + 1; // Set the correct index (1-based)
-                const rowId = select.id.split('_')[1];
-                const selectedProduct = currentProducts[newIndex];
-
-                // Restore product data
-                document.getElementById(`productWeight_${rowId}`).value = selectedProduct.weight;
-                document.getElementById(`productStampEnduser_${rowId}`).value = selectedProduct.stampEnduser;
-                document.getElementById(`productNum1_${rowId}`).value = selectedProduct.num1;
-                document.getElementById(`productNum2_${rowId}`).value = selectedProduct.num2;
-                document.getElementById(`productNum3_${rowId}`).value = selectedProduct.num3;
-            } else {
-                // Clear row data if product doesn't exist
-                const rowId = select.id.split('_')[1];
-                clearRowData(rowId);
-            }
-        } else {
-            // Clear row data if no product was previously selected
-            const rowId = select.id.split('_')[1];
-            clearRowData(rowId);
-        }
+        // Update the dataset to track the current transaction type
+        select.dataset.previousTransactionType = selectedTransactionType;
     });
 
     // Recalculate prices for all rows
@@ -311,7 +164,7 @@ function updateAllProductSelects() {
 }
 
 function clearRowData(rowId) {
-    const fields = ['productWeight', 'productStampEnduser', 'productPrice', 'totalQtyProductPrice', 'productNum1', 'productNum2', 'productNum3'];
+    const fields = ['productWeight', 'productStampEnduser', 'productPrice', 'totalQtyProductPrice', 'productNum1', 'productNum2'];
     fields.forEach(field => {
         const element = document.getElementById(`${field}_${rowId}`);
         if (element) {
@@ -397,8 +250,8 @@ function handleTransactionTypeChange() {
     const selectedType = document.querySelector('input[name="transactionType"]:checked').value;
     console.log('Transaction type changed to:', selectedType);
 
-    // Update all product dropdowns
-    updateAllProductSelects();
+    // Update all product rows with new stamp/enduser values
+    updateAllProductRows();
 }
 
 // Event listeners
@@ -413,15 +266,16 @@ document.addEventListener('change', function (e) {
         const rowId = select.id.split('_')[1];
         const selectedIndex = select.selectedIndex - 1;
         const currentProducts = getCurrentProducts();
+        const selectedTransactionType = document.querySelector('input[name="transactionType"]:checked').value;
 
         if (selectedIndex >= 0 && selectedIndex < currentProducts.length) {
             const selectedProduct = currentProducts[selectedIndex];
+            const stampEnduserValue = getStampEnduserValue(selectedProduct, selectedTransactionType);
 
             document.getElementById(`productWeight_${rowId}`).value = selectedProduct.weight;
-            document.getElementById(`productStampEnduser_${rowId}`).value = selectedProduct.stampEnduser;
+            document.getElementById(`productStampEnduser_${rowId}`).value = stampEnduserValue;
             document.getElementById(`productNum1_${rowId}`).value = selectedProduct.num1;
             document.getElementById(`productNum2_${rowId}`).value = selectedProduct.num2;
-            document.getElementById(`productNum3_${rowId}`).value = selectedProduct.num3;
 
             calculateTotal();
         }
@@ -447,7 +301,6 @@ document.getElementById('addRows').addEventListener('click', function () {
             <td><input readonly type="text" name="totalQtyProductPrice[]" id="totalQtyProductPrice_${rowCount}" required class="form-control price total-input" autocomplete="off"></td>
             <td style="display: none"><input readonly type="text" name="productNum1[]" id="productNum1_${rowCount}"></td>
             <td style="display: none"><input readonly type="text" name="productNum2[]" id="productNum2_${rowCount}"></td>
-            <td style="display: none"><input readonly type="text" name="productNum3[]" id="productNum3_${rowCount}"></td>
         `;
     tableBody.appendChild(newRow);
 
@@ -522,6 +375,7 @@ function calculateItemPrices() {
     let totalAmount = 0;
     const goldPrice = parseNumber(document.getElementById('goldPrice').value);
     const currentProducts = getCurrentProducts();
+    const selectedTransactionType = document.querySelector('input[name="transactionType"]:checked').value;
 
     document.querySelectorAll("[id^='productQty_']").forEach(function (element) {
         const id = element.id.split('_')[1];
@@ -540,12 +394,25 @@ function calculateItemPrices() {
         const quantity = parseNumber(qtyElement.value);
         const num1 = parseNumber(document.getElementById(`productNum1_${id}`)?.value);
         const num2 = parseNumber(document.getElementById(`productNum2_${id}`)?.value);
-        const num3 = parseNumber(document.getElementById(`productNum3_${id}`)?.value);
 
         if (quantity > 0 && weight > 0 && goldPrice > 0) {
             const soso = num1 / num2;
-            const unitPrice = goldPrice * soso + stampEnduser;
-            const total = weight * quantity * unitPrice + num3;
+            let unitPrice, total;
+
+            // Different calculation logic based on transaction type
+            if (selectedTransactionType === 'sale') {
+                unitPrice = goldPrice * soso + stampEnduser;
+                total = weight * quantity * unitPrice;
+            } else if (selectedTransactionType === 'return') {
+                // For returns, subtract the cashback from gold price
+                unitPrice = goldPrice * soso + stampEnduser;
+                total = weight * quantity * unitPrice;
+            } else if (selectedTransactionType === 'returnUnpacked') {
+                // For return unpacked, subtract the cashbackunpacking from gold price
+                unitPrice = goldPrice * soso + stampEnduser;
+                total = weight * quantity * unitPrice;
+            }
+
             const itemPrice = total / quantity;
 
             priceElement.value = formatMoney(itemPrice);
