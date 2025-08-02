@@ -451,21 +451,6 @@ body {
     }
 }
 
-.slide-in {
-    animation: slideIn 0.5s ease-out;
-}
-
-@keyframes slideIn {
-    from {
-        opacity: 0;
-        transform: translateX(-100%);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
 .table-responsive {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;

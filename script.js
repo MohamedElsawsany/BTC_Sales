@@ -286,7 +286,6 @@ document.getElementById('addRows').addEventListener('click', function () {
     rowCount++;
     const tableBody = document.getElementById('productTableBody');
     const newRow = document.createElement('tr');
-    newRow.className = 'slide-in';
     newRow.innerHTML = `
             <td><div class="checkbox-container"><input class="itemRow form-check-input" type="checkbox"></div></td>
             <td>

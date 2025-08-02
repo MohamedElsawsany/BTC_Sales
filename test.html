@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gold Invoice Calculator</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        
+        :root {
+    --primary-black: #000000;
+    --light-gold: #fff8dc;
+    --dark-black: #1a1a1a;
+    --white: #ffffff;
+    --light-gray: #f5f5f5;
+    --border-color: #d4af37;
+    --success: #28a745;
+    --danger: #dc3545;
+    --warning: #ffc107;
+    --gold: #d4af37;
+}
+
+body {
+    background: linear-gradient(135deg, var(--light-gold) 0%, var(--white) 100%);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+}
+
+.main-container {
+    padding: 20px 0;
+}
+
+.main-card {
+    background: var(--white);
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.card-header {
+    background: linear-gradient(135deg, var(--dark-black), var(--gold));
+    color: var(--white);
+    padding: 30px;
+    text-align: center;
+    border: none;
+}
+
+.card-header h2 {
+    margin: 0;
+    font-weight: 600;
+    font-size: 2rem;
+}
+
+.card-header p {
+    margin: 10px 0 0 0;
+    opacity: 0.9;
+    font-size: 1.1rem;
+}
+
+.card-body {
+    padding: 40px;
+}
+
+.section-title {
+    color: var(--primary-black);
+    font-weight: 600;
+    font-size: 1.3rem;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--light-gold);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.input-group-text {
+    background: var(--primary-black);
+    color: var(--gold);
+    border: none;
+    font-weight: 500;
+    min-width: 130px;
+    justify-content: center;
+    white-space: nowrap;
+}
+
+.form-control, .form-select {
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    padding: 12px 15px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 0.2rem rgba(212, 175, 55, 0.25);
+}
+
+.form-control:invalid {
+    border-color: var(--danger);
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.products-section {
+    background: var(--light-gray);
+    border-radius: 12px;
+    padding: 25px;
+    margin: 30px 0;
+}
+
+.transaction-type-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 20px 0;
+    padding: 20px;
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.radio-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    padding: 12px 20px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    background: var(--light-gray);
+    border: 2px solid var(--border-color);
+}
+
+.radio-wrapper:hover {
+    background: var(--light-gold);
+    border-color: var(--gold);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+}
+
+.radio-wrapper.selected {
+    background: var(--gold);
+    border-color: var(--dark-black);
+    color: var(--white);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
+}
+
+.radio-wrapper input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    width: 0;
+    height: 0;
+}
+
+.custom-radio {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--border-color);
+    border-radius: 50%;
+    background: var(--white);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.radio-wrapper:hover .custom-radio {
+    border-color: var(--gold);
+}
+
+.radio-wrapper.selected .custom-radio {
+    border-color: var(--white);
+    background: var(--white);
+}
+
+.custom-radio::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--gold);
+    transform: scale(0);
+    transition: transform 0.2s ease;
+}
+
+.radio-wrapper.selected .custom-radio::after {
+    transform: scale(1);
+}
+
+.radio-label {
+    font-weight: 500;
+    font-size: 1.1rem;
+    user-select: none;
+    transition: color 0.3s ease;
+}
+
+.radio-wrapper.selected .radio-label {
+    color: var(--white);
+}
+
+.radio-icon {
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+.radio-wrapper.selected .radio-icon {
+    color: var(--white);
+}
+
+.table {
+    background: var(--white);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 0;
+}
+
+.table thead th {
+    background: var(--primary-black);
+    color: var(--gold);
+    border: none;
+    font-weight: 600;
+    padding: 15px 10px;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.table tbody td {
+    padding: 12px 8px;
+    vertical-align: middle;
+    border-color: var(--border-color);
+}
+
+.table tbody tr:hover {
+    background-color: var(--light-gold);
+}
+
+.btn {
+    border-radius: 8px;
+    padding: 12px 25px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.btn-primary {
+    background: var(--gold);
+    color: var(--black);
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+}
+
+.btn-primary:hover {
+    background: #c9a032;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+}
+
+.btn-danger {
+    background: var(--danger);
+    box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3);
+}
+
+.btn-danger:hover {
+    background: #c82333;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(220, 53, 69, 0.4);
+}
+
+.btn-success {
+    background: var(--success);
+    box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+}
+
+.btn-success:hover {
+    background: #218838;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
+}
+
+.total-section {
+    background: var(--light-gold);
+    border-radius: 12px;
+    padding: 25px;
+    margin-top: 30px;
+}
+
+.total-input {
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-align: center;
+    background-color: var(--light-gray);
+}
+
+.checkbox-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-check-input {
+    transform: scale(1.2);
+}
+
+.btn.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.error-message {
+    color: var(--danger);
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    display: none;
+}
+
+.has-error .form-control,
+.has-error .form-select {
+    border-color: var(--danger);
+}
+
+.has-error .error-message {
+    display: block;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: #6c757d;
+}
+
+.empty-state i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .card-body {
+        padding: 20px;
+    }
+
+    .card-header {
+        padding: 20px;
+    }
+
+    .card-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .table-responsive {
+        border-radius: 10px;
+        margin: 0 -10px;
+    }
+
+    .input-group-text {
+        min-width: 100px;
+        font-size: 0.9rem;
+        padding: 8px 12px;
+    }
+
+    .btn {
+        margin-bottom: 10px;
+        width: 100%;
+    }
+
+    .products-section, .total-section {
+        padding: 15px;
+        margin: 20px -5px;
+    }
+
+    .table thead th {
+        padding: 10px 5px;
+        font-size: 0.875rem;
+    }
+
+    .table tbody td {
+        padding: 8px 4px;
+    }
+
+    .form-control, .form-select {
+        padding: 8px 10px;
+        font-size: 0.9rem;
+    }
+
+    .transaction-type-container {
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px;
+    }
+
+    .radio-wrapper {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .main-container {
+        padding: 10px 0;
+    }
+
+    .section-title {
+        font-size: 1.1rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .input-group-text {
+        min-width: 80px;
+        font-size: 0.8rem;
+    }
+
+    .btn-group-mobile {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .btn-group-mobile .btn {
+        width: 100%;
+        margin-bottom: 0;
+    }
+
+    .transaction-type-container {
+        gap: 10px;
+    }
+
+    .radio-wrapper {
+        padding: 10px 15px;
+    }
+
+    .radio-label {
+        font-size: 1rem;
+    }
+}
+
+/* Animations */
+.fade-in {
+    animation: fadeIn 0.8s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.table-responsive::-webkit-scrollbar {
+    height: 8px;
+}
+
+.table-responsive::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+    background: var(--gold);
+    border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+    .table-responsive .table {
+        min-width: 700px;
+        width: 100%;
+    }
+
+    .table th,
+    .table td {
+        white-space: nowrap;
+    }
+}
+    </style>
+</head>
+<body>
+<div class="container-fluid main-container">
+    <div class="row justify-content-center">
+        <div class="col-12 col-xl-10">
+            <div class="card main-card fade-in">
+                <div class="card-header">
+                    <h2><i class="fas fa-coins me-3"></i>Gold Invoice Calculator</h2>
+                    <p>Professional Gold Price Management System</p>
+                </div>
+
+                <div class="card-body">
+                    <!-- Invoice Information Section -->
+<div class="mb-4">
+    <h4 class="section-title">
+        <i class="fas fa-file-invoice"></i>
+        Invoice Information
+    </h4>
+
+    <div class="row">
+        <!-- Invoice No -->
+        <div class="col-md-6">
+            <div class="input-group mb-3">
+                <span class="input-group-text">
+                    <i class="fas fa-hashtag me-2"></i>Invoice No.
+                </span>
+                <input type="text"
+                       class="form-control"
+                       id="invoiceNo"
+                       name="invoiceNo"
+                       autocomplete="off"
+                       placeholder="Enter invoice number">
+            </div>
+        </div>
+
+        <!-- Serial No -->
+        <div class="col-md-6">
+            <div class="input-group mb-3">
+                <span class="input-group-text">
+                    <i class="fas fa-barcode me-2"></i>Serial No.
+                </span>
+                <input type="text"
+                       class="form-control"
+                       id="serialNo"
+                       name="serialNo"
+                       autocomplete="off"
+                       placeholder="Enter serial number">
+            </div>
+        </div>
+
+        <!-- Customer Name -->
+        <div class="col-md-6">
+            <div class="input-group mb-3">
+                <span class="input-group-text">
+                    <i class="fas fa-user-circle me-2"></i>Customer Name
+                </span>
+                <input type="text"
+                       class="form-control"
+                       id="customerName"
+                       name="customerName"
+                       autocomplete="off"
+                       placeholder="Enter customer name">
+            </div>
+        </div>
+
+        <!-- Customer Phone -->
+        <div class="col-md-6">
+            <div class="input-group mb-3">
+                <span class="input-group-text">
+                    <i class="fas fa-phone me-2"></i>Customer Phone
+                </span>
+                <input type="tel"
+                       class="form-control"
+                       id="customerPhone"
+                       name="customerPhone"
+                       autocomplete="off"
+                       placeholder="Enter phone number">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+                    <!-- Gold Price Section -->
+                    <div class="mb-4">
+                        <h4 class="section-title">
+                            <i class="fas fa-chart-line"></i>
+                            Gold Price Configuration
+                        </h4>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-gold me-2"></i>Gold Price (21K)
+                                    </span>
+                                    <input type="text"
+                                           class="form-control"
+                                           required
+                                           id="goldPrice"
+                                           name="goldPrice"
+                                           autocomplete="off"
+                                           placeholder="Enter 21k gold price"
+                                           oninput="handleGoldPriceInput(this)">
+                                </div>
+                                <div class="error-message" id="goldPriceError">Please enter a valid gold price</div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-crown me-2"></i>Gold Price (24K)
+                                    </span>
+                                    <input type="text"
+                                           class="form-control"
+                                           readonly
+                                           id="goldPrice24"
+                                           name="goldPrice24"
+                                           placeholder="Auto-calculated 24k price">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Products Section -->
+                    <div class="products-section">
+                        <h4 class="section-title">
+                            <i class="fas fa-shopping-cart"></i>
+                            Product Details
+                        </h4>
+
+                        <!-- Enhanced Radio Button Section -->
+                        <div class="transaction-type-container">
+                            <label class="radio-wrapper">
+                                <input type="radio" name="transactionType" value="sale" checked>
+                                <span class="custom-radio"></span>
+                                <i class="fas fa-shopping-bag radio-icon"></i>
+                                <span class="radio-label">Sale</span>
+                            </label>
+                            <label class="radio-wrapper">
+                                <input type="radio" name="transactionType" value="return">
+                                <span class="custom-radio"></span>
+                                <i class="fas fa-undo-alt radio-icon"></i>
+                                <span class="radio-label">Return</span>
+                            </label>
+                            <label class="radio-wrapper">
+                                <input type="radio" name="transactionType" value="returnUnpacked">
+                                <span class="custom-radio"></span>
+                                <i class="fas fa-exchange-alt radio-icon"></i>
+                                <span class="radio-label">Return Unpacked</span>
+                            </label>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="table table-bordered text-center" id="invoiceProducts">
+                                <thead>
+                                <tr>
+                                    <th width="8%">
+                                        <div class="checkbox-container">
+                                            <input id="checkAll" class="form-check-input" type="checkbox"
+                                                   title="Select All">
+                                        </div>
+                                    </th>
+                                    <th width="30%"><i class="fas fa-box me-2"></i>Product</th>
+                                    <th width="15%"><i class="fas fa-sort-numeric-up me-2"></i>Qty</th>
+                                    <th width="22%"><i class="fas fa-dollar-sign me-2"></i>Item Price</th>
+                                    <th width="25%"><i class="fas fa-calculator me-2"></i>Total</th>
+                                </tr>
+                                </thead>
+                                <tbody id="productTableBody">
+                                <tr class="slide-in">
+                                    <td>
+                                        <div class="checkbox-container">
+                                            <input class="itemRow form-check-input" type="checkbox">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <select required name="productId[]" id="productId_1" class="form-select">
+                                            <option disabled value="0" selected>Select Product</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <input type="text"
+                                               name="productQty[]"
+                                               id="productQty_1"
+                                               required
+                                               class="form-control qty"
+                                               autocomplete="off"
+                                               placeholder="Qty"
+                                               min="1"
+                                               oninput="handleQuantityInput(this)">
+                                    </td>
+                                    <td style="display: none">
+                                        <input type="text" readonly name="productWeight[]" id="productWeight_1"
+                                               class="form-control">
+                                    </td>
+                                    <td style="display: none">
+                                        <input type="text" readonly name="productStampEnduser[]"
+                                               id="productStampEnduser_1" class="form-control">
+                                    </td>
+                                    <td>
+                                        <input type="text"
+                                               required
+                                               name="productPrice[]"
+                                               id="productPrice_1"
+                                               class="form-control total-input"
+                                               autocomplete="off"
+                                               readonly>
+                                    </td>
+                                    <td>
+                                        <input readonly
+                                               type="text"
+                                               name="totalQtyProductPrice[]"
+                                               id="totalQtyProductPrice_1"
+                                               required
+                                               class="form-control price total-input"
+                                               autocomplete="off">
+                                    </td>
+                                    <td style="display: none"><input readonly type="text" name="productNum1[]"
+                                                                     id="productNum1_1"></td>
+                                    <td style="display: none"><input readonly type="text" name="productNum2[]"
+                                                                     id="productNum2_1"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="row mt-3">
+                            <div class="col-md-6">
+                                <div class="d-flex gap-2 btn-group-mobile">
+                                    <button class="btn btn-danger" id="removeRows" type="button">
+                                        <i class="fas fa-trash me-2"></i>Delete Selected
+                                    </button>
+                                    <button class="btn btn-success" id="addRows" type="button">
+                                        <i class="fas fa-plus me-2"></i>Add Row
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-md-6 text-end">
+                                <small class="text-muted">
+                                    <i class="fas fa-info-circle me-1"></i>
+                                    Select products and enter quantities to calculate prices
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Total Section -->
+                    <div class="total-section">
+                        <div class="row justify-content-end align-items-center">
+                            <div class="col-md-6 col-lg-4">
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-receipt me-2"></i>Grand Total
+                                    </span>
+                                    <input type="text"
+                                           class="form-control total-input"
+                                           readonly
+                                           required
+                                           name="subTotal"
+                                           id="subTotal"
+                                           placeholder="0.00">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<script>
+    const sale_btc_products = [
+    {name: "ربع جنيه", weight: 2, stampEnduser: 71, cashback: 24, cashbackunpacking: 10, num1: 1, num2: 1},
+    {name: "نصف جنيه", weight: 4, stampEnduser: 66, cashback: 24, cashbackunpacking: 10, num1: 1, num2: 1},
+    {name: "جنيه", weight: 8, stampEnduser: 61, cashback: 24, cashbackunpacking: 10, num1: 1, num2: 1},
+    {name: "2.5 جنيه", weight: 20, stampEnduser: 56, cashback: 24, cashbackunpacking: 10, num1: 1, num2: 1},
+    {name: "خمسة جنيه", weight: 40, stampEnduser: 53, cashback: 24, cashbackunpacking: 10, num1: 1, num2: 1},
+    {name: "عشرة جنيه", weight: 80, stampEnduser: 51, cashback: 24, cashbackunpacking: 10, num1: 1, num2: 1}
+];
+
+let rowCount = 1;
+
+// Get current products array based on transaction type
+function getCurrentProducts() {
+    const selectedType = document.querySelector('input[name="transactionType"]:checked').value;
+    return sale_btc_products; // Using same products array but different values based on transaction type
+}
+
+// Get the appropriate stamp/enduser value based on transaction type
+function getStampEnduserValue(product, transactionType) {
+    switch (transactionType) {
+        case 'sale':
+            return product.stampEnduser;
+        case 'return':
+            return product.cashback;
+        case 'returnUnpacked':
+            return product.cashbackunpacking;
+        default:
+            return product.stampEnduser;
+    }
+}
+
+// Utility functions
+function formatMoney(value) {
+    if (isNaN(value) || value === null || value === undefined) return '0';
+    return Number(value).toLocaleString('en-US', {
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0
+    });
+}
+
+function parseNumber(value) {
+    if (!value) return 0;
+    return parseFloat(value.toString().replace(/,/g, '')) || 0;
+}
+
+function showError(elementId, message) {
+    const element = document.getElementById(elementId);
+    const errorElement = document.getElementById(elementId + 'Error');
+    if (element && errorElement) {
+        element.parentElement.classList.add('has-error');
+        errorElement.textContent = message;
+    }
+}
+
+function clearError(elementId) {
+    const element = document.getElementById(elementId);
+    const errorElement = document.getElementById(elementId + 'Error');
+    if (element && errorElement) {
+        element.parentElement.classList.remove('has-error');
+    }
+}
+
+function populateProductSelect(select) {
+    const currentProducts = getCurrentProducts();
+    select.innerHTML = `<option disabled value="0" selected>Select Product</option>`;
+    currentProducts.forEach((product, index) => {
+        const option = document.createElement("option");
+        option.value = index + 1;
+        option.textContent = product.name;
+        select.appendChild(option);
+    });
+    // Initialize dataset to track the current transaction type
+    select.dataset.previousTransactionType = document.querySelector('input[name="transactionType"]:checked').value;
+}
+
+// Update all product rows when transaction type changes
+function updateAllProductRows() {
+    const selectedTransactionType = document.querySelector('input[name="transactionType"]:checked').value;
+    const allSelects = document.querySelectorAll('select[name="productId[]"]');
+    const currentProducts = getCurrentProducts();
+
+    allSelects.forEach(select => {
+        const rowId = select.id.split('_')[1];
+        const selectedIndex = parseInt(select.value) - 1;
+
+        // If a product is selected, update its stamp/enduser value
+        if (selectedIndex >= 0 && selectedIndex < currentProducts.length) {
+            const selectedProduct = currentProducts[selectedIndex];
+            const stampEnduserValue = getStampEnduserValue(selectedProduct, selectedTransactionType);
+
+            // Update the stamp/enduser value for this row
+            document.getElementById(`productStampEnduser_${rowId}`).value = stampEnduserValue;
+
+            // Keep other values the same
+            document.getElementById(`productWeight_${rowId}`).value = selectedProduct.weight;
+            document.getElementById(`productNum1_${rowId}`).value = selectedProduct.num1;
+            document.getElementById(`productNum2_${rowId}`).value = selectedProduct.num2;
+        }
+
+        // Update the dataset to track the current transaction type
+        select.dataset.previousTransactionType = selectedTransactionType;
+    });
+
+    // Recalculate prices for all rows
+    calculateTotal();
+}
+
+function clearRowData(rowId) {
+    const fields = ['productWeight', 'productStampEnduser', 'productPrice', 'totalQtyProductPrice', 'productNum1', 'productNum2'];
+    fields.forEach(field => {
+        const element = document.getElementById(`${field}_${rowId}`);
+        if (element) {
+            element.value = '';
+        }
+    });
+}
+
+function handleGoldPriceInput(input) {
+    clearError('goldPrice');
+
+    // Remove non-numeric characters except decimal point
+    let value = input.value.replace(/[^\d.]/g, '');
+
+    // Ensure only one decimal point
+    const parts = value.split('.');
+    if (parts.length > 2) {
+        value = parts[0] + '.' + parts.slice(1).join('');
+    }
+
+    input.value = value;
+
+    if (value && !isNaN(value) && parseFloat(value) > 0) {
+        calculateTotal();
+    } else if (value) {
+        showError('goldPrice', 'Please enter a valid gold price');
+    }
+}
+
+function handleQuantityInput(input) {
+    let value = parseInt(input.value);
+    if (isNaN(value) || value < 1) {
+        input.value = '';
+    } else {
+        input.value = value;
+        calculateTotal();
+    }
+}
+
+// Enhanced radio button functionality
+function initializeRadioButtons() {
+    const radioWrappers = document.querySelectorAll('.radio-wrapper');
+    const radioInputs = document.querySelectorAll('input[name="transactionType"]');
+
+    // Set initial state
+    updateRadioButtonStates();
+
+    // Add click event listeners to wrapper labels
+    radioWrappers.forEach(wrapper => {
+        wrapper.addEventListener('click', function() {
+            const radioInput = this.querySelector('input[type="radio"]');
+            if (radioInput && !radioInput.checked) {
+                radioInput.checked = true;
+                updateRadioButtonStates();
+                handleTransactionTypeChange();
+            }
+        });
+    });
+
+    // Add change event listeners to radio inputs
+    radioInputs.forEach(input => {
+        input.addEventListener('change', function() {
+            updateRadioButtonStates();
+            handleTransactionTypeChange();
+        });
+    });
+}
+
+function updateRadioButtonStates() {
+    const radioWrappers = document.querySelectorAll('.radio-wrapper');
+
+    radioWrappers.forEach(wrapper => {
+        const radioInput = wrapper.querySelector('input[type="radio"]');
+        if (radioInput.checked) {
+            wrapper.classList.add('selected');
+        } else {
+            wrapper.classList.remove('selected');
+        }
+    });
+}
+
+function handleTransactionTypeChange() {
+    const selectedType = document.querySelector('input[name="transactionType"]:checked').value;
+    console.log('Transaction type changed to:', selectedType);
+
+    // Update all product rows with new stamp/enduser values
+    updateAllProductRows();
+}
+
+// Phone number formatting
+function formatPhoneNumber(input) {
+    // Remove all non-numeric characters
+    let value = input.value.replace(/\D/g, '');
+    
+    // Limit to reasonable phone number length
+    if (value.length > 15) {
+        value = value.slice(0, 15);
+    }
+    
+    input.value = value;
+}
+
+// Event listeners
+document.addEventListener('DOMContentLoaded', () => {
+    populateProductSelect(document.getElementById('productId_1'));
+    initializeRadioButtons();
+});
+
+document.addEventListener('change', function (e) {
+    if (e.target && e.target.matches("select[name='productId[]']")) {
+        const select = e.target;
+        const rowId = select.id.split('_')[1];
+        const selectedIndex = select.selectedIndex - 1;
+        const currentProducts = getCurrentProducts();
+        const selectedTransactionType = document.querySelector('input[name="transactionType"]:checked').value;
+
+        if (selectedIndex >= 0 && selectedIndex < currentProducts.length) {
+            const selectedProduct = currentProducts[selectedIndex];
+            const stampEnduserValue = getStampEnduserValue(selectedProduct, selectedTransactionType);
+
+            document.getElementById(`productWeight_${rowId}`).value = selectedProduct.weight;
+            document.getElementById(`productStampEnduser_${rowId}`).value = stampEnduserValue;
+            document.getElementById(`productNum1_${rowId}`).value = selectedProduct.num1;
+            document.getElementById(`productNum2_${rowId}`).value = selectedProduct.num2;
+
+            calculateTotal();
+        }
+    }
+});
+
+document.getElementById('addRows').addEventListener('click', function () {
+    rowCount++;
+    const tableBody = document.getElementById('productTableBody');
+    const newRow = document.createElement('tr');
+    newRow.innerHTML = `
+            <td><div class="checkbox-container"><input class="itemRow form-check-input" type="checkbox"></div></td>
+            <td>
+                <select required name="productId[]" id="productId_${rowCount}" class="form-select">
+                    <option disabled value="0" selected>Select Product</option>
+                </select>
+            </td>
+            <td><input type="text" name="productQty[]" id="productQty_${rowCount}" required class="form-control qty" autocomplete="off" placeholder="Qty" min="1" oninput="handleQuantityInput(this)"></td>
+            <td style="display: none"><input type="text" readonly name="productWeight[]" id="productWeight_${rowCount}" class="form-control"></td>
+            <td style="display: none"><input type="text" readonly name="productStampEnduser[]" id="productStampEnduser_${rowCount}" class="form-control"></td>
+            <td><input type="text" required name="productPrice[]" id="productPrice_${rowCount}" class="form-control total-input" autocomplete="off" readonly></td>
+            <td><input readonly type="text" name="totalQtyProductPrice[]" id="totalQtyProductPrice_${rowCount}" required class="form-control price total-input" autocomplete="off"></td>
+            <td style="display: none"><input readonly type="text" name="productNum1[]" id="productNum1_${rowCount}"></td>
+            <td style="display: none"><input readonly type="text" name="productNum2[]" id="productNum2_${rowCount}"></td>
+        `;
+    tableBody.appendChild(newRow);
+
+    // Populate the new select dropdown
+    const newSelect = document.getElementById(`productId_${rowCount}`);
+    populateProductSelect(newSelect);
+});
+
+document.getElementById('removeRows').addEventListener('click', function () {
+    const checkedBoxes = document.querySelectorAll('.itemRow:checked');
+    if (checkedBoxes.length === 0) {
+        alert('Please select at least one row to delete.');
+        return;
+    }
+
+    checkedBoxes.forEach(checkbox => {
+        checkbox.closest('tr').remove();
+    });
+    calculateTotal();
+
+    // Uncheck "select all" if no rows remain
+    const remainingRows = document.querySelectorAll('.itemRow');
+    if (remainingRows.length === 0) {
+        document.getElementById('checkAll').checked = false;
+    }
+});
+
+document.getElementById('checkAll').addEventListener('change', function () {
+    const checked = this.checked;
+    document.querySelectorAll('.itemRow').forEach(cb => cb.checked = checked);
+});
+
+// Update "select all" checkbox based on individual selections
+document.addEventListener('change', function(e) {
+    if (e.target && e.target.classList.contains('itemRow')) {
+        const allCheckboxes = document.querySelectorAll('.itemRow');
+        const checkedCheckboxes = document.querySelectorAll('.itemRow:checked');
+        const selectAllCheckbox = document.getElementById('checkAll');
+
+        if (checkedCheckboxes.length === 0) {
+            selectAllCheckbox.indeterminate = false;
+            selectAllCheckbox.checked = false;
+        } else if (checkedCheckboxes.length === allCheckboxes.length) {
+            selectAllCheckbox.indeterminate = false;
+            selectAllCheckbox.checked = true;
+        } else {
+            selectAllCheckbox.indeterminate = true;
+        }
+    }
+});
+
+function calculateTotal() {
+    if (!validateGoldPrice()) {
+        return;
+    }
+
+    calculateItemPrices();
+    calculateGoldPrice24();
+}
+
+function validateGoldPrice() {
+    const goldPrice = parseNumber(document.getElementById('goldPrice').value);
+    if (goldPrice <= 0) {
+        showError('goldPrice', 'Please enter a valid gold price greater than 0');
+        return false;
+    }
+    clearError('goldPrice');
+    return true;
+}
+
+function calculateItemPrices() {
+    let totalAmount = 0;
+    const goldPrice = parseNumber(document.getElementById('goldPrice').value);
+    const currentProducts = getCurrentProducts();
+    const selectedTransactionType = document.querySelector('input[name="transactionType"]:checked').value;
+
+    document.querySelectorAll("[id^='productQty_']").forEach(function (element) {
+        const id = element.id.split('_')[1];
+        const weightElement = document.getElementById(`productWeight_${id}`);
+        const stampElement = document.getElementById(`productStampEnduser_${id}`);
+        const qtyElement = document.getElementById(`productQty_${id}`);
+        const priceElement = document.getElementById(`productPrice_${id}`);
+        const totalElement = document.getElementById(`totalQtyProductPrice_${id}`);
+
+        if (!weightElement || !stampElement || !qtyElement || !priceElement || !totalElement) {
+            return;
+        }
+
+        const weight = parseNumber(weightElement.value);
+        const stampEnduser = parseNumber(stampElement.value);
+        const quantity = parseNumber(qtyElement.value);
+        const num1 = parseNumber(document.getElementById(`productNum1_${id}`)?.value);
+        const num2 = parseNumber(document.getElementById(`productNum2_${id}`)?.value);
+
+        if (quantity > 0 && weight > 0 && goldPrice > 0) {
+            const soso = num1 / num2;
+            let unitPrice, total;
+
+            // Different calculation logic based on transaction type
+            if (selectedTransactionType === 'sale') {
+                unitPrice = goldPrice * soso + stampEnduser;
+                total = weight * quantity * unitPrice;
+            } else if (selectedTransactionType === 'return') {
+                // For returns, subtract the cashback from gold price
+                unitPrice = goldPrice * soso + stampEnduser;
+                total = weight * quantity * unitPrice;
+            } else if (selectedTransactionType === 'returnUnpacked') {
+                // For return unpacked, subtract the cashbackunpacking from gold price
+                unitPrice = goldPrice * soso + stampEnduser;
+                total = weight * quantity * unitPrice;
+            }
+
+            const itemPrice = total / quantity;
+
+            priceElement.value = formatMoney(itemPrice);
+            totalElement.value = formatMoney(total);
+            totalAmount += total;
+        } else {
+            priceElement.value = '';
+            totalElement.value = '';
+        }
+    });
+
+    document.getElementById('subTotal').value = formatMoney(totalAmount);
+}
+
+function calculateGoldPrice24() {
+    const goldPrice = parseNumber(document.getElementById('goldPrice').value);
+    if (goldPrice > 0) {
+        const price24 = goldPrice * (999.9 / 875);
+        document.getElementById('goldPrice24').value = formatMoney(price24);
+    } else {
+        document.getElementById('goldPrice24').value = '';
+    }
+}
+
+// Format number inputs on blur
+document.addEventListener('blur', function (e) {
+    if (e.target && (e.target.id === 'goldPrice' || e.target.id.startsWith('productPrice_'))) {
+        const value = parseNumber(e.target.value);
+        if (value > 0) {
+            e.target.value = formatMoney(value);
+        }
+    }
+}, true);
+
+// Prevent form submission on enter key in input fields
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' && e.target.tagName === 'INPUT') {
+        e.preventDefault();
+        // Move to next input or trigger calculation
+        const form = e.target.closest('form') || document;
+        const inputs = Array.from(form.querySelectorAll('input:not([readonly]):not([disabled]), select'));
+        const currentIndex = inputs.indexOf(e.target);
+        if (currentIndex < inputs.length - 1) {
+            inputs[currentIndex + 1].focus();
+        }
+    }
+});
+
+// Initialize tooltips if Bootstrap is available
+document.addEventListener('DOMContentLoaded', function() {
+    if (typeof bootstrap !== 'undefined' && bootstrap.Tooltip) {
+        const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+    }
+});
+
+// Add loading states for buttons
+function showLoading(buttonId) {
+    const button = document.getElementById(buttonId);
+    if (button) {
+        button.classList.add('loading');
+        button.disabled = true;
+    }
+}
+
+function hideLoading(buttonId) {
+    const button = document.getElementById(buttonId);
+    if (button) {
+        button.classList.remove('loading');
+        button.disabled = false;
+    }
+}
+
+// Debounce function for better performance
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+// Debounced calculation for better performance
+const debouncedCalculateTotal = debounce(calculateTotal, 300);
+
+// Update gold price input to use debounced calculation
+document.getElementById('goldPrice').addEventListener('input', function() {
+    handleGoldPriceInput(this);
+    debouncedCalculateTotal();
+});
+</script>
+</body>
+</html>
